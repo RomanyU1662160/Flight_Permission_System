@@ -13,12 +13,15 @@ class CreatePurposesTable extends Migration
      */
     public function up()
     {
-        Schema::create('purposes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('purposes')) {
+            Schema::create('purposes', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->text('info');
+                $table->timestamps();
+            });
+        }
     }
-
     /**
      * Reverse the migrations.
      *

@@ -13,12 +13,22 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+        if (!Schema::hasTable('permissions')) {
+            Schema::create('permissions', function (Blueprint $table) {
+                $table->id();
+                $table->integer('requester_id')->unsigned()->index();
+                $table->integer('approver_id')->unsigned()->index();
+                $table->integer('state_id')->unsigned()->index();
+                $table->string('ref');
+                $table->text('info');
+                $table->timestamps();
+                $table->foreign('requester_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('approver_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
 
+            });
+        }
+    }
     /**
      * Reverse the migrations.
      *

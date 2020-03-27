@@ -13,12 +13,22 @@ class CreateAirlinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('airlines', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
 
+        if (!Schema::hasTable('airlines')) {
+            Schema::create('airlines', function (Blueprint $table) {
+                $table->id();
+                $table->integer('country_id')->nullable()->unsigned()->index();
+                $table->integer('agent_id')->nullable()->unsigned()->index();
+                $table->string('name');
+                $table->string('icao');
+                $table->string('iata');
+                $table->text('info');
+                $table->timestamps();
+                $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+                $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            });
+        }
+    }
     /**
      * Reverse the migrations.
      *

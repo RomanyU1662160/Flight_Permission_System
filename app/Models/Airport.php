@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Country;
 use App\Models\Flight;
 use Illuminate\Database\Eloquent\Model;
 
 class Airport extends Model
 {
 
-    protected $fillable = ['name', 'info'];
-    // protected $fillable = ['name', 'info'];
+    protected $fillable = ['name', 'icao', 'iata', 'info'];
 
     public function country()
     {

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Airline extends Model
 {
-    protected $fillable = ['country_id', 'icao', 'iata', 'info'];
+    protected $fillable = ['country_id', 'name', 'icao', 'iata', 'info'];
 
     public function country()
     {

@@ -13,11 +13,18 @@ class CreateAirportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('airports', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+        if (!Schema::hasTable('airports')) {
+            Schema::create('airports', function (Blueprint $table) {
+                $table->id();
+                $table->integer('country_id')->nullable()->unsigned()->index();
+                $table->string('name');
+                $table->string('icao');
+                $table->string('iata');
+                $table->timestamps();
+                $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+
+            });
+        }}
 
     /**
      * Reverse the migrations.

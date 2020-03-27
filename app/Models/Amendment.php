@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Amendment extends Model
 {
-    protected $fillable = ['requester_id', 'approver_id', 'state_id', 'ref', 'info'];
+    protected $fillable = ['permission_id', 'requester_id', 'approver_id', 'state_id', 'ref', 'info'];
 
     public function permission()
     {

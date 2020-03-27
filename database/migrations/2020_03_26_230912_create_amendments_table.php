@@ -13,12 +13,23 @@ class CreateAmendmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('amendments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('amendments')) {
+            Schema::create('amendments', function (Blueprint $table) {
+                $table->id();
+                $table->integer('permission_id')->unsigned()->index();
+                $table->integer('requester_id')->unsigned()->index();
+                $table->integer('approver_id')->unsigned()->index();
+                $table->integer('state_id')->unsigned()->index();
+                $table->string('ref');
+                $table->text('info');
+                $table->timestamps();
+                $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+                $table->foreign('requester_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('approver_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            });
+        }
     }
-
     /**
      * Reverse the migrations.
      *
