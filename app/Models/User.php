@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Agent;
 use App\Models\Role;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,12 +17,22 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'fname', 'lname', 'airline_id', 'agent_id', 'username', 'email', 'password',
     ];
 
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class);
+    }
+
+    public function airline()
+    {
+        return $this->belongsTo(Airline::class);
     }
 
     /**
