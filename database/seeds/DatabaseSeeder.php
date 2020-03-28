@@ -15,6 +15,17 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RolesTableSeeder::class,
             StatesTableSeeder::class,
+            PurposesTableSeeder::class,
+            PermissionsTableSeeder::class,
+            PurposesTableSeeder::class,
+            FlightsTableSeeder::class,
+            CountriesTableSeeder::class,
+            AmendmentsTableSeeder::class,
+            aircraftsTableSeeder::class,
+            agentsTableSeeder::class,
+            airlinesTableSeeder::class,
+            airportsTableSeeder::class,
+            FlightPurposesTableSeeder::class,
         ]);
     }
 }

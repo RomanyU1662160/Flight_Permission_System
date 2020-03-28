@@ -15,18 +15,26 @@ class StatesTableSeeder extends Seeder
         DB::table('states')->insert([
             [
                 'name' => 'approved',
+                'created_at' => now(),
+                'updated_at' => now(),
 
             ],
             [
                 'name' => 'submitted',
+                'created_at' => now(),
+                'updated_at' => now(),
 
             ],
             [
                 'name' => 'pending',
+                'created_at' => now(),
+                'updated_at' => now(),
 
             ],
             [
                 'name' => 'rejected',
+                'created_at' => now(),
+                'updated_at' => now(),
 
             ],
         ]);

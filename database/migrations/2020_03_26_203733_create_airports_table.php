@@ -20,6 +20,10 @@ class CreateAirportsTable extends Migration
                 $table->string('name');
                 $table->string('icao');
                 $table->string('iata');
+                $table->string('latitude')->nullable();
+                $table->string('longitude')->nullable();
+                $table->string('timezone')->nullable();
+                $table->text('info');
                 $table->timestamps();
                 $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
 
