@@ -25,3 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'], function () {
     Route::get('/all', 'FlightController@index')->name('.all');
 });
+
+/* Flights routes */
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], function () {
+    Route::get('/admin/userType', 'auth\RegisterController@selectUserType')->name('.newUser.selectUserType');
+});

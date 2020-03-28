@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('admin');
     }
 
     /**
@@ -57,6 +57,12 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
+
+    public function selectUserType()
+    {
+        return view('admins.registerNewUser');
+    }
+
 
     /**
      * Create a new user instance after a valid registration.
