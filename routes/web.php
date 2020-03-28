@@ -29,4 +29,7 @@ Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'
 /* Flights routes */
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], function () {
     Route::get('/admin/userType', 'auth\RegisterController@selectUserType')->name('.newUser.selectUserType');
+    Route::get('/admin/newCAA', 'auth\RegisterController@registerNewCAA')->name('.newUser.newCAA');
+    Route::get('/admin/newAirliner', 'auth\RegisterController@registerNewAirliner')->name('.newUser.newAirliner');
+    Route::get('/admin/newAgent', 'auth\RegisterController@registerNewAgent')->name('.newUser.newAgent');
 });

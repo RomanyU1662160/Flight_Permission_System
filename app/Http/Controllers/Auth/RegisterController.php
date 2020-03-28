@@ -60,8 +60,25 @@ class RegisterController extends Controller
 
     public function selectUserType()
     {
-        return view('admins.registerNewUser');
+        return view('admins.newUser.selectUserType');
     }
+
+    public function registerNewCAA()
+    {
+        return view('admins.newUser.registerNewCAA');
+    }
+
+    public function registerNewAirliner()
+    {
+        return view('admins.newUser.registerNewAirliner');
+    }
+
+    public function registerNewAgent()
+    {
+        return view('admins.newUser.registerNewAirliner');
+    }
+
+
 
 
     /**
