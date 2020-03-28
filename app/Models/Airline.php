@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Agent;
 use App\Models\Aircraft;
 use App\Models\Country;
+use App\Models\Flight;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Airline extends Model
@@ -28,6 +30,11 @@ class Airline extends Model
     public function flights()
     {
         return $this->hasMany(Flight::class);
+    }
+
+    public function officers()
+    {
+        return $this->hasMany(User::class);
     }
 
 }
