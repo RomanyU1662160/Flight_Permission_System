@@ -30,6 +30,12 @@ Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], function () {
     Route::get('/admin/userType', 'auth\RegisterController@selectUserType')->name('.newUser.selectUserType');
     Route::get('/admin/newCAA', 'auth\RegisterController@registerNewCAA')->name('.newUser.newCAA');
+    Route::post('/admin/newCAA', 'auth\RegisterController@create');
+
     Route::get('/admin/newAirliner', 'auth\RegisterController@registerNewAirliner')->name('.newUser.newAirliner');
+    Route::post('/admin/newAirliner', 'auth\RegisterController@create');
+
+
     Route::get('/admin/newAgent', 'auth\RegisterController@registerNewAgent')->name('.newUser.newAgent');
+    Route::post('/admin/newAgent', 'auth\RegisterController@create');
 });

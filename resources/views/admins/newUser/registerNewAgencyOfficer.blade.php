@@ -10,7 +10,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header ">
-                    <h3 class="text-primary text-center"> {{ __('Register new airline officer') }} </h3>
+                    <h3 class="text-primary text-center"> {{ __('Register new agency officer') }} </h3>
                 </div>
 
                 <div class="card-body">
@@ -61,20 +61,20 @@
 
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Airline') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Agent') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control @error('airline') is-invalid @enderror" name="airline" id="airline">
-                                    <option value="" readonly> Please Select Airline </option>
-                                    @if (!empty($airlines))
-                                    @foreach( $airlines as $airline)
-                                    <option value="{{$airline->id}}"> {{$airline->name}}</option>
+                                <select class="form-control @error('agent') is-invalid @enderror" name="agent" id="agent">
+                                    <option value="" readonly> Please Select Agent </option>
+                                    @if (!empty($agents))
+                                    @foreach( $agents as $agent)
+                                    <option value="{{$agent->id}}"> {{$agent->name}}</option>
                                     @endforeach
 
                                     @endif
                                 </select>
 
-                                @error('airline')
+                                @error('agent')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="{{route('admin.newUser.newCAA')}}" class="btn btn-link float-right"> New CAA <i class="fas fa-user-plus"></i></a>
-                    <a href="{{route('admin.newUser.newAgent')}}" class="btn btn-link float-left"> New agency officer <i class="fas fa-user-plus"></i></a>
+                    <a href="{{route('admin.newUser.newAirliner')}}" class="btn btn-link float-left"> New airline officer <i class="fas fa-user-plus"></i></a>
                 </div>
             </div>
         </div>

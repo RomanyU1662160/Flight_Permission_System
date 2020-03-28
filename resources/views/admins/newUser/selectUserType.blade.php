@@ -15,7 +15,7 @@
             </a>
 
         </div>
-        newAirliner
+
 
         <div class=" card col-md-3 jumbotron m-2  ">
             <a href="{{route('admin.newUser.newAirliner')}}" class="btn btn-link">

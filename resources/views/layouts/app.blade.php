@@ -36,6 +36,8 @@
     @yield('scripts')
     @livewireScripts
 
+    <!-- Font awesome  -->
+    <script src="https://kit.fontawesome.com/4e8530644b.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
