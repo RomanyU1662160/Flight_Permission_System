@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Agent;
 use App\Models\Role;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Agent;
+use App\Models\Permission;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -33,6 +34,27 @@ class User extends Authenticatable
     public function airline()
     {
         return $this->belongsTo(Airline::class);
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany(Permission::class);
+    }
+
+    public function approvals()
+    {
+        return $this->hasMany(Permission::class);
+    }
+
+    public function getCompany()
+    {
+        if ($this->agent) {
+            return $this->agent->name;
+        } elseif ($this->airline) {
+            return  $this->airline->name;
+        } else {
+            return "CAA officer";
+        }
     }
 
     /**
