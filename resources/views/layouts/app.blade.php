@@ -22,17 +22,22 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
-  @include('layouts.nav')
-
-        <main class="py-4">
-          @include('layouts.partials.flashes')
-            @yield('content')
-        </main>
+        @include('layouts.nav')
+        <div class="container">
+            <main class="py-4">
+                @include('layouts.partials.flashes')
+                @yield('content')
+            </main>
+        </div>
     </div>
-       @yield('scripts')
+    @yield('scripts')
     @livewireScripts
 
+    <!-- Font awesome  -->
+    <script src="https://kit.fontawesome.com/4e8530644b.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
