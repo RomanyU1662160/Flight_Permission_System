@@ -28,14 +28,19 @@ Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'
 
 /* Flights routes */
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], function () {
-    Route::get('/admin/userType', 'auth\RegisterController@selectUserType')->name('.newUser.selectUserType');
-    Route::get('/admin/newCAA', 'auth\RegisterController@registerNewCAA')->name('.newUser.newCAA');
-    Route::post('/admin/newCAA', 'auth\RegisterController@create');
+    Route::get('/admin/userType', 'UserController@selectUserType')->name('.newUser.selectUserType');
 
-    Route::get('/admin/newAirliner', 'auth\RegisterController@registerNewAirliner')->name('.newUser.newAirliner');
-    Route::post('/admin/newAirliner', 'auth\RegisterController@create');
+    Route::get('/admin/newCAA', 'UserController@registerNewCAA')->name('.newUser.newCAA');
+
+    Route::post('/admin/newCAA', 'UserController@storeNewUser')->name('.newUser.newCAA');
 
 
-    Route::get('/admin/newAgent', 'auth\RegisterController@registerNewAgent')->name('.newUser.newAgent');
-    Route::post('/admin/newAgent', 'auth\RegisterController@create');
+    Route::get('/admin/newAirliner', 'UserController@registerNewAirliner')->name('.newUser.newAirliner');
+
+    Route::post('/admin/newAirliner', 'UserController@storeNewUser')->name('.newUser.newAirliner');
+
+
+    Route::get('/admin/newAgent', 'UserController@registerNewAgent')->name('.newUser.newAgent');
+
+    Route::post('/admin/newAgent', 'UserController@storeNewUser')->name('.newUser.newAgent');
 });

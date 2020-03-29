@@ -58,47 +58,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-
-        // validate the role input id the airline and the agent inputs are not exist
-        $v->sometimes('role', "required", function ($data) {
-            // dd($data);
-            return !Arr::hasAny($data, ['data.airline', 'data.agent']);
-        });
-
-        // validate the airline input id the role and the agent inputs are not exist
-        $v->sometimes('airline', 'required', function ($data) {
-            return  !Arr::hasAny($data, ['role', 'agent']);
-        });
-
-        // validate the agent input id the airline and the role inputs are not exist
-        $v->sometimes('agent', 'required', function ($data) {
-            return !Arr::hasAny($data, ['role', 'airline']);
-        });
-
         return $v;
     }
 
-    public function selectUserType()
-    {
-        return view('admins.newUser.selectUserType');
-    }
-
-    public function registerNewCAA()
-    {
-        return view('admins.newUser.registerNewCAA');
-    }
-
-    public function registerNewAirliner()
-    {
-        $airlines = Airline::all();
-        return view('admins.newUser.registerNewAirliner', compact('airlines'));
-    }
-
-    public function registerNewAgent()
-    {
-        $agents = Agent::all();
-        return view('admins.newUser.registerNewAgencyOfficer', compact('agents'));
-    }
 
 
     /**

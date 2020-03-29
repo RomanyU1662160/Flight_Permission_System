@@ -4,6 +4,17 @@
 @section('content')
 
 
+@error('role')
+<p class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</p>
+@enderror
+
+@error('agent')
+<p class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</p>
+@enderror
 
 <div class="container">
     <div class="row justify-content-center">
@@ -14,7 +25,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{route('admin.newUser.newAirliner') }}">
                         @csrf
 
                         <div class="form-group row">

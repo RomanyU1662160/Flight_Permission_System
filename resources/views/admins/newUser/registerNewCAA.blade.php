@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('admin.newUser.newCAA')}}">
                         @csrf
 
                         <div class="form-group row">
@@ -64,7 +64,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control @error('role') is-invalid @enderror" name="roles" id="role" readonly>
+                                <select class="form-control @error('role') is-invalid @enderror" name="role" id="role" readonly>
                                     <option value="1"> Air Transport Officer </option>
 
                                 </select>

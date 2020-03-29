@@ -4,7 +4,11 @@
 @section('content')
 
 
-
+@error('role')
+<span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</span>
+@enderror
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +18,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('admin.newUser.newAgent') }}">
                         @csrf
 
                         <div class="form-group row">
