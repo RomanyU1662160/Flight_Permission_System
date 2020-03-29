@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Flight;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
-class FlightController extends Controller
+class PermissionController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +14,14 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $flights = Flight::latest()->paginate(12);
-        //dd($flights);
-        return view('flights.index', compact('flights'));
+        //
+    }
+
+    public function getSubmittedPermissions()
+    {
+
+        $permissions = Permission::submitted()->get();
+        return view('permissions.submitted', compact('permissions'));
     }
 
     /**

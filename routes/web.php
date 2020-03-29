@@ -44,3 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 
     Route::post('/admin/newAgent', 'UserController@storeNewUser')->name('.newUser.newAgent');
 });
+
+Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
+    Route::get('/submitted', 'PermissionController@getSubmittedPermissions')->name('.submitted');
+});

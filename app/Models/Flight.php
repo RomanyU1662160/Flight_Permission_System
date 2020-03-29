@@ -14,6 +14,8 @@ class Flight extends Model
 {
     protected $fillable = ['airline_id', 'agent_id', 'origin_id', 'destination_id', 'aircraft_id', 'nbr', 'callsign', 'dof', 'etd', 'eta', 'info'];
 
+    protected  $dates = ['dof', 'etd', 'eta'];
+
     public function purposes()
     {
         return $this->belongsToMany(Purpose::class);
@@ -48,5 +50,4 @@ class Flight extends Model
     {
         return $this->belongsTo(Agent::class);
     }
-
 }

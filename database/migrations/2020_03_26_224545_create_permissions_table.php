@@ -17,7 +17,7 @@ class CreatePermissionsTable extends Migration
             Schema::create('permissions', function (Blueprint $table) {
                 $table->id();
                 $table->integer('requester_id')->unsigned()->index();
-                $table->integer('approver_id')->unsigned()->index();
+                $table->integer('approver_id')->nullable()->unsigned()->index();
                 $table->integer('state_id')->unsigned()->index();
                 $table->string('ref');
                 $table->text('info');
@@ -25,7 +25,6 @@ class CreatePermissionsTable extends Migration
                 $table->foreign('requester_id')->references('id')->on('users')->onDelete('cascade');
                 $table->foreign('approver_id')->references('id')->on('users')->onDelete('cascade');
                 $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
-
             });
         }
     }

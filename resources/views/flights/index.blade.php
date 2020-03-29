@@ -2,9 +2,5 @@
 
 @section('content')
 
-
- @foreach($flights as  $flight)
-
-@include('flights.templates.flightTemplate')
- @endforeach
-@endsection
+<livewire:flights-list>
+    @endsection
