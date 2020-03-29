@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class FlightController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +15,8 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $flights = Flight::paginate(12);
-        // dd($flights);
+        $flights = Flight::latest()->paginate(12);
+        //dd($flights);
         return view('flights.index', compact('flights'));
     }
 

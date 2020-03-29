@@ -27,7 +27,7 @@ class airportsTableSeeder extends Seeder
             ],
 
             [
-                'country_id' => 3,
+                'country_id' => 53,
                 'name' => "Manchester Airport",
                 'icao' => 'EGM',
                 'iata' => "MAN",
@@ -39,7 +39,7 @@ class airportsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'country_id' => 3,
+                'country_id' => 53,
                 'name' => "London Gatwick Airport",
                 'icao' => 'LGW',
                 'iata' => "EGKK",
@@ -51,10 +51,22 @@ class airportsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'country_id' => 3,
+                'country_id' => 53,
                 'name' => "Leeds Bradford Airport ",
-                'icao' => 'LBA',
-                'iata' => "EGNM",
+                'icao' => 'EGNM',
+                'iata' => "LBA",
+                'info' => "information to be Cairo airport, coming soon ",
+                'latitude' => "53.8658981",
+                "longitude" => '-1.66057',
+                'timezone' => 'Europe/London (GMT +0:00)',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'country_id' => 53,
+                'name' => "Abu Dhabi International Airport ",
+                'icao' => 'OMAA',
+                'iata' => "AUH",
                 'info' => "information to be Cairo airport, coming soon ",
                 'latitude' => "53.8658981",
                 "longitude" => '-1.66057',
