@@ -17,12 +17,7 @@ class PermissionController extends Controller
         //
     }
 
-    public function getSubmittedPermissions()
-    {
 
-        $permissions = Permission::submitted()->get();
-        return view('permissions.submitted', compact('permissions'));
-    }
 
     /**
      * Show the form for creating a new resource.

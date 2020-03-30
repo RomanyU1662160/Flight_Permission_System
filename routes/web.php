@@ -46,5 +46,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 });
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
-    Route::get('/submitted', 'PermissionController@getSubmittedPermissions')->name('.submitted');
+});
+
+Route::group(['prefix' => 'request', 'middleware' => ['auth'], 'as' => 'requests'], function () {
+    Route::get('/submitted', 'RequestController@getSubmittedRequests')->name('.submitted');
+    Route::get('/', 'RequestController@newRequestStep1')->name('.new.step1');
 });
