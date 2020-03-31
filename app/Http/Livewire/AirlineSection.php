@@ -25,8 +25,6 @@ class AirlineSection extends Component
     public function setIcaoIataValues()
     {
         $airline = Airline::find($this->airline);
-
-
         if ($airline) {
             $country = $airline->country->name;
             $this->icao = $airline->icao;

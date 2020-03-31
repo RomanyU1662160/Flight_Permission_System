@@ -50,5 +50,6 @@ Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permi
 
 Route::group(['prefix' => 'request', 'middleware' => ['auth'], 'as' => 'requests'], function () {
     Route::get('/submitted', 'RequestController@getSubmittedRequests')->name('.submitted');
-    Route::get('/', 'RequestController@newRequestStep1')->name('.new.step1');
+    Route::get('/new/step1', 'RequestController@getAirlineSection_step1')->name('.new.step1');
+    Route::post('/new/step1', 'RequestController@postAirlineSection_step1')->name('.new.step1');
 });
