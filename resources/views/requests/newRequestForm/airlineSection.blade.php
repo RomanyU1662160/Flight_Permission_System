@@ -15,14 +15,8 @@
 
     <div class="row">
         <div class="col-md-8">
-            <form action="" method="post">
-                @csrf
-                <livewire:airline-section>
 
-                    <div class="alert">
-                        <button type=submit class="btn btn-info float-right"> Continue </button>
-                    </div>
-            </form>
+            <livewire:airline-section>
         </div>
         <div class="col-md-4">
             <livewire:summary-section>

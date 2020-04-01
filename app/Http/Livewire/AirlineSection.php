@@ -52,7 +52,10 @@ class AirlineSection extends Component
             $this->nationality = null;
         }
     }
-
+    public function submit()
+    {
+        dd("submitted");
+    }
 
     public function setAirlineIcaoValues()
     {
