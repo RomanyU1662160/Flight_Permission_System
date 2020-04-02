@@ -1,6 +1,6 @@
 <div>
-    <form action="{{route('requests.new.step1')}}" method="post" wire:submit.prevent="submit">
-        @csrf
+    <form wire:submit.prevent="submit">
+
         <div class="mt-4 border card p-2">
             <h3 class="text-info font-weight-bolder ">Airline Details :</h3>
             <div class="alert">

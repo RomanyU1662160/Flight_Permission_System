@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use session;
 use App\Models\Airline;
 use App\Models\Purpose;
 use Livewire\Component;
@@ -54,8 +55,20 @@ class AirlineSection extends Component
     }
     public function submit()
     {
-        dd("submitted");
+        $this->validate([
+            'airline' => 'required',
+            'icao' => 'required',
+            'iata' => 'required',
+        ]);
+        $airline = Airline::find($this->airline);
+
+        session(['airline' => $airline]);
+
+        //dd(session()->get('airline'));
+        return redirect()->route('requests.new.step2');
+        //  return redirect()->route('requests.submitted');
     }
+
 
     public function setAirlineIcaoValues()
     {

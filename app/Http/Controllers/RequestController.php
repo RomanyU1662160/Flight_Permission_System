@@ -21,21 +21,21 @@ class RequestController extends Controller
         $newFlight = new Flight();
         return view('requests.newRequestForm.airlineSection', compact('newFlight'));
     }
-
+    /*
     public function postAirlineSection_step1(Request $request)
     {
         //dd($request);
         $request->validate([
-            //'airline' => 'required',
+            'airline' => 'required',
             'icao' => 'required',
-            // 'iata' => 'required',
+            'iata' => 'required',
         ]);
-        dd('submitted');
+
         return view('requests.newRequestForm.routeSection');
     }
-
-    public function getRouteSection_step2()
+*/
+    public function getFlightSection_step2()
     {
-        return view('requests.newRequestForm.airlineSection');
+        return view('requests.newRequestForm.flightSection');
     }
 }
