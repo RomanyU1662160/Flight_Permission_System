@@ -4,5 +4,5 @@
 @section('content')
 {{session()->get('airline') }}
 
-<livewire:flight-section :airline="session()->get('airline')">
+<livewire:flight-section>
     @endsection
