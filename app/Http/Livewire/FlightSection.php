@@ -158,9 +158,10 @@ class FlightSection extends Component
         }
     }
 
-    public function setDestinationNameIcaoValues()
+    public function setDestinationNameIcaoValues($val)
     {
-        $airport = Airport::where('iata', $this->l1_destination_iata)->first();
+        $airport = Airport::where('iata', $val)->first();
+
         if ($airport) {
             $this->l1_destination_name = $airport->id;
             $this->l1_destination_icao = $airport->icao;

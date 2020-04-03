@@ -55,9 +55,10 @@
                     </div>
                     <div class="col">
                         <label for="origin_dof" class="font-weight-bold text-primary"> ICAO: </label>
-                        <input type="text" class="form-control text-uppercase @error('l1_origin_icao') is-invalid @enderror  " wire:model="l1_origin_icao" wire:keyup="setOriginNameIataValues">
+                        <input type="text" class="form-control text-uppercase @error('l1_origin_icao') is-invalid @enderror  " wire:model="l1_origin_icao" wire:keydown="setOriginNameIataValues('{{ $l1_origin_icao }}')">
 
                         @error('l1_origin_icao') <span class="text-danger">{{ $message }}</span> @enderror
+                        {{$l1_origin_icao}}
                     </div>
 
 
@@ -109,7 +110,7 @@
                     </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary text-uppercase"> IATA: </label>
-                        <input type="text" class="form-control @error('l1_destination_icao') is-invalid @enderror" wire:model="l1_destination_iata" wire:keyup="setDestinationNameIcaoValues">
+                        <input type="text" class="form-control @error('l1_destination_icao') is-invalid @enderror" wire:model="l1_destination_iata" wire:input="setDestinationNameIcaoValues('{{$l1_destination_iata}}')" >
                         @error('l1_destination_iata') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
