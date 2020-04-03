@@ -5,4 +5,6 @@
 {{session()->get('airline') }}
 
 <livewire:flight-section>
+
+
     @endsection

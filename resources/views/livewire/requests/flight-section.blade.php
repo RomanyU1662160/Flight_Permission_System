@@ -42,7 +42,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="origin" class="font-weight-bold text-primary"> Origin: </label>
-                        <select class="form-control   @error('l1_origin_name') is-invalid @enderror   " wire:model="l1_origin_name" wire:change="setOriginIcaoIataValues">
+                        <select class="form-control   @error('l1_origin_name') is-invalid @enderror   " wire:model="l1_origin_name" wire:change="setOriginIcaoIataValues('{{$l1_origin_name}}')">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col">
                         <label for="origin_dof" class="font-weight-bold text-primary"> ICAO: </label>
-                        <input type="text" class="form-control text-uppercase @error('l1_origin_icao') is-invalid @enderror  " wire:model="l1_origin_icao" wire:keydown="setOriginNameIataValues('{{ $l1_origin_icao }}')">
+                        <input type="text" class="form-control text-uppercase @error('l1_origin_icao') is-invalid @enderror  " wire:model="l1_origin_icao" wire:input="setOriginNameIataValues('{{ $l1_origin_icao }}')">
 
                         @error('l1_origin_icao') <span class="text-danger">{{ $message }}</span> @enderror
                         {{$l1_origin_icao}}
@@ -104,16 +104,18 @@
                     </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary text-uppercase"> ICAO: </label>
-                        <input type="text" class="form-control  @error('l1_destination_icao') is-invalid @enderror" wire:model="l1_destination_icao" wire:keyup="setDestinationNameIataValues">
+                        <input type="text" class="form-control  @error('l1_destination_icao') is-invalid @enderror" wire:model="l1_destination_icao" wire:keydown="setDestinationNameIataValues">
 
                         @error('l1_destination_icao') <span class="text-danger">{{ $message }}</span> @enderror
+
                     </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary text-uppercase"> IATA: </label>
-                        <input type="text" class="form-control @error('l1_destination_icao') is-invalid @enderror" wire:model="l1_destination_iata" wire:input="setDestinationNameIcaoValues('$l1_destination_iata')" >
+                        <input type="text" class="form-control @error('l1_destination_iata') is-invalid @enderror" wire:model="l1_destination_iata" wire:keyup="setDestinationNameIcaoValues">
                         @error('l1_destination_iata') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
 
+                        {{$l1_destination_iata}}
+                    </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary @error('l1_destination_dof') is-invalid @enderror "> DOF: </label>
                         <input type="date" class="form-control" wire:model="l1_destination_dof">
@@ -123,7 +125,7 @@
 
                     <div class="col">
                         <label for="etd" class="font-weight-bold text-primary @error('l1_destination_etd') is-invalid @enderror  "> ETA: </label>
-                        <input type="time" id="" class="form-control" wire:model="l1_destination_etd">
+                        <input type="time" class="form-control" wire:model="l1_destination_etd">
                         @error('l1_destination_etd') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -157,23 +159,17 @@
                         </div>
                     </div>
 
-
-
                     <div class="col">
                         <label for="l2-same" class="font-weight-bold text-primary"> Call sign: </label>
                         <div class="input-group mb-3">
-
                             <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" wire:model="L2callsign">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <input type="checkbox" id="l2-same" wire:change="setL2Callsign">
                                     Same as flight number
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
 
                 </div>
@@ -183,7 +179,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="origin" class="font-weight-bold text-primary"> Origin: </label>
-                        <select id="" class="form-control" wire:model="l2_origin_name">
+                        <select id="" class="form-control" wire:model="l2_origin_name" wire:change="setL2OriginIcaoIataValues">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)
@@ -195,11 +191,11 @@
                     </div>
                     <div class="col">
                         <label for="origin_dof" class="font-weight-bold text-primary"> ICAO: </label>
-                        <input type="text" class="form-control" wire:model="l2_origin_icao">
+                        <input type="text" class="form-control text-uppercase" wire:model="l2_origin_icao" wire:input="setL2OriginNameIataValues">
                     </div>
                     <div class="col">
                         <label for="origin_dof" class="font-weight-bold text-primary"> IATA: </label>
-                        <input type="text" class="form-control" wire:model="l2_origin_iata">
+                        <input type="text" class="form-control" wire:model="l2_origin_iata" wire:input="setL2OriginNameIcaoValues">
                     </div>
                     <div class="col">
                         <label for="origin_dof" class="font-weight-bold text-primary"> DOF: </label>
@@ -211,8 +207,6 @@
                         <input type="time" id="" class="form-control" wire:model="l2_origin_etd">
                     </div>
 
-
-
                 </div>
             </div>
 
@@ -221,7 +215,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="destination" class="font-weight-bold text-primary"> Destination: </label>
-                        <select id="" class="form-control" wire:model="l2_destination_name">
+                        <select id="" class="form-control" wire:model="l2_destination_name" wire:change="setL2DestinationIcaoIataValues">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)
@@ -233,15 +227,15 @@
                     </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary"> ICAO: </label>
-                        <input type="text" class="form-control" wire:model="l2_destination_icao">
+                        <input type="text" class="form-control text-uppercase" wire:model="l2_destination_icao" wire:input="setL2DestinationNameIataValues">
                     </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary"> IATA: </label>
-                        <input type="text" class="form-control" wire:model="l2_destination_iata">
+                        <input type="text" class="form-control text-uppercase" wire:model="l2_destination_iata" wire:input="setL2DestinationNameIcaoValues">
                     </div>
                     <div class="col">
                         <label for="destination_dof" class="font-weight-bold text-primary"> DOF: </label>
-                        <input type="date" class="form-control" wire:model="l2_destination_dof">
+                        <input type="date" class="form-control text-uppercase" wire:model="l2_destination_dof">
                     </div>
 
                     <div class="col">

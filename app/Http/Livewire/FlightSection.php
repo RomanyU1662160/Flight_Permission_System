@@ -107,6 +107,13 @@ class FlightSection extends Component
         $this->l1_origin_iata = $airport->iata;
     }
 
+    public function setL2OriginIcaoIataValues()
+    {
+        $airport = Airport::find($this->l2_origin_name);
+        $this->l2_origin_icao = $airport->icao;
+        $this->l2_origin_iata = $airport->iata;
+    }
+
     public function setOriginNameIataValues()
     {
         $airport = Airport::where('icao', $this->l1_origin_icao)->first();
@@ -118,6 +125,19 @@ class FlightSection extends Component
             $this->l1_origin_iata = null;
         }
     }
+
+    public function setL2OriginNameIataValues()
+    {
+        $airport = Airport::where('icao', $this->l2_origin_icao)->first();
+        if ($airport) {
+            $this->l2_origin_name = $airport->id;
+            $this->l2_origin_iata = $airport->iata;
+        } else {
+            $this->l2_origin_name = null;
+            $this->l2_origin_iata = null;
+        }
+    }
+
 
     public function setOriginNameIcaoValues()
     {
@@ -131,6 +151,18 @@ class FlightSection extends Component
         }
     }
 
+    public function setL2OriginNameIcaoValues()
+    {
+        $airport = Airport::where('iata', $this->l2_origin_iata)->first();
+        if ($airport) {
+            $this->l2_origin_name = $airport->id;
+            $this->l2_origin_icao = $airport->icao;
+        } else {
+            $this->l2_origin_name = null;
+            $this->l2_origin_icao = null;
+        }
+    }
+
     public function setDestinationIcaoIataValues()
     {
         $airport = Airport::find($this->l1_destination_name);
@@ -141,6 +173,19 @@ class FlightSection extends Component
         } else {
             $this->l1_destination_icao = null;
             $this->l1_destination_iata = null;
+        }
+    }
+
+    public function setL2DestinationIcaoIataValues()
+    {
+        $airport = Airport::find($this->l2_destination_name);
+
+        if ($airport) {
+            $this->l2_destination_icao = $airport->icao;
+            $this->l2_destination_iata = $airport->iata;
+        } else {
+            $this->l2_destination_icao = null;
+            $this->l2_destination_iata = null;
         }
     }
 
@@ -158,12 +203,25 @@ class FlightSection extends Component
         }
     }
 
-    public function setDestinationNameIcaoValues($val)
+    public function setL2DestinationNameIataValues()
     {
-        $airport = Airport::where('iata', $val)->first();
+        $airport = Airport::where('icao', $this->l2_destination_icao)->first();
+        if ($airport) {
+            $this->l2_destination_name = $airport->id;
+            $this->l2_destination_iata = $airport->iata;
+        } else {
+            $this->l2_destination_name = null;
+            $this->l2_destination_iata = null;
+        }
+    }
+
+
+    public function setDestinationNameIcaoValues()
+    {
+        $airport = Airport::where('iata', $this->l1_destination_iata)->first();
 
         if ($airport) {
-            dd($val);
+
             $this->l1_destination_name = $airport->id;
             $this->l1_destination_icao = $airport->icao;
         } else {
@@ -172,6 +230,21 @@ class FlightSection extends Component
         }
     }
 
+
+
+    public function setL2DestinationNameIcaoValues()
+    {
+        $airport = Airport::where('iata', $this->l2_destination_iata)->first();
+
+        if ($airport) {
+
+            $this->l2_destination_name = $airport->id;
+            $this->l2_destination_icao = $airport->icao;
+        } else {
+            $this->l2_destination_name = null;
+            $this->l2_destination_icao = null;
+        }
+    }
 
 
 
@@ -184,21 +257,19 @@ class FlightSection extends Component
     {
         $leg1 = new Flight([
             'airline_id' => $this->airline->id,
-            'origin_id' => $this->origin,
-            'destination_id' => $this->destination,
-            'nbr' => $this->nbr,
-            'callsign' => $this->callsign,
-            'dof' => $this->origin_dof,
-
+            'origin_id' => $this->l1_origin_name,
+            'destination_id' => $this->l1_destination_name,
+            'nbr' => $this->L1nbr,
+            'callsign' => $this->L1callsign,
+            'dof' => $this->l1_origin_dof,
         ]);
         $leg2 = new Flight([
             'airline_id' => $this->airline->id,
-            'origin_id' => $this->origin,
-            'destination_id' => $this->destination,
-            'nbr' => $this->nbr,
-            'callsign' => $this->callsign,
-            'dof' => $this->origin_dof,
-
+            'origin_id' => $this->l2_origin_name,
+            'destination_id' => $this->l2_destination_name,
+            'nbr' => $this->L2nbr,
+            'callsign' => $this->L2callsign,
+            'dof' => $this->l2_origin_dof,
         ]);
     }
 

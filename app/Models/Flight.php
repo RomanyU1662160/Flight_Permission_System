@@ -3,23 +3,33 @@
 namespace App\Models;
 
 use App\Models\Agent;
-use App\Models\Aircraft;
+
 use App\Models\Airline;
 use App\Models\Airport;
-use App\Models\Permission;
 use App\Models\Purpose;
+use App\Models\Aircraft;
+use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Flight extends Model
 {
-    protected $fillable = ['airline_id', 'agent_id', 'origin_id', 'destination_id', 'aircraft_id', 'nbr', 'callsign', 'dof', 'etd', 'eta', 'info'];
+    protected $fillable = ['airline_id', 'leg_id', 'agent_id', 'origin_id', 'destination_id', 'aircraft_id', 'nbr', 'callsign', 'origin_dof', 'destination_dof', 'etd', 'eta', 'info'];
 
-    protected  $dates = ['dof', 'etd', 'eta'];
+    protected  $dates = ['destination_dof', 'origin_dof', 'etd', 'eta'];
 
     public function purposes()
     {
         return $this->belongsToMany(Purpose::class);
     }
+
+
+    // get the second leg of the flight
+    public function leg()
+    {
+        return $this->hasOne(Flight::class, 'leg_id', 'id');
+    }
+
 
     public function permission()
     {
