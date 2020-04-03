@@ -163,6 +163,7 @@ class FlightSection extends Component
         $airport = Airport::where('iata', $val)->first();
 
         if ($airport) {
+            dd($val);
             $this->l1_destination_name = $airport->id;
             $this->l1_destination_icao = $airport->icao;
         } else {
