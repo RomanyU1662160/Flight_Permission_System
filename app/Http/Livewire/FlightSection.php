@@ -11,12 +11,14 @@ use Livewire\Component;
 class FlightSection extends Component
 {
     public $airline;
-    public $nbr;
-    public $callsign;
+
+
     public $hasReturn = false;
 
 
     // L1 Variables
+    public $L1callsign;
+    public $L1nbr;
     public $l1_origin_name;
     public $l1_origin_icao;
     public $l1_origin_iata;
@@ -30,6 +32,8 @@ class FlightSection extends Component
     public $l1_destination_etd;
 
     // L2 Variables
+    public $L2nbr;
+    public $L2callsign;
     public $l2_origin_name;
     public $l2_origin_icao;
     public $l2_origin_iata;
@@ -80,10 +84,15 @@ class FlightSection extends Component
         $this->hasReturn = !$this->hasReturn;
     }
 
-    public function setCallsign()
+    public function setL1Callsign()
     {
 
-        return $this->callsign = $this->airline->icao . $this->nbr;
+        return $this->L1callsign = $this->airline->icao . $this->L1nbr;
+    }
+
+    public function setL2Callsign()
+    {
+        $this->L2callsign = $this->airline->icao . $this->L2nbr;
     }
 
     public function mount()

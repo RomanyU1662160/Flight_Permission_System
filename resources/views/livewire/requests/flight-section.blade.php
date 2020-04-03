@@ -7,24 +7,24 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="nbr" class="font-weight-bold text-primary"> Flight Number: </label>
+                        <label for="" class="font-weight-bold text-primary"> Flight Number: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <div class="input-group-text  text-uppercase" wire:model="icao">{{$airline->icao}}</div>
+                                <div class="input-group-text  text-uppercase">{{$airline->icao}}</div>
                             </div>
 
-                            <input type=" text" class="form-control" placeholder="" wire:model="nbr">
+                            <input type=" text" class="form-control" placeholder="" wire:model="L1nbr">
                         </div>
                     </div>
 
                     <div class="col">
-                        <label for="callsign" class="font-weight-bold text-primary"> Call sign: </label>
+                        <label for="same" class="font-weight-bold text-primary"> Call sign: </label>
                         <div class="input-group mb-3">
 
-                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" wire:model="callsign">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" wire:model="L1callsign">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <input type="checkbox" id="same" wire:change="setCallsign">
+                                    <input type="checkbox" id="same" wire:change="setL1Callsign">
                                     Same as flight number
                                 </div>
 
@@ -146,20 +146,30 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="nbr" class="font-weight-bold text-primary"> Flight Number: </label>
+                        <label for="L1nbr" class="font-weight-bold text-primary"> Flight Number: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text  text-uppercase" wire:model="icao">{{$airline->icao}}</div>
                             </div>
 
-                            <input type=" text" class="form-control" placeholder="">
+                            <input type=" text" class="form-control" placeholder="" wire:model="L2nbr">
                         </div>
                     </div>
 
+
+
                     <div class="col">
-                        <label for="callsign" class="font-weight-bold text-primary"> Call sign: </label>
+                        <label for="l2-same" class="font-weight-bold text-primary"> Call sign: </label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" wire:model="L2callsign">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" id="l2-same" wire:change="setL2Callsign">
+                                    Same as flight number
+                                </div>
+
+                            </div>
                         </div>
 
 
