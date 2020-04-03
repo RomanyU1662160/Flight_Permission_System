@@ -261,7 +261,10 @@ class FlightSection extends Component
             'destination_id' => $this->l1_destination_name,
             'nbr' => $this->L1nbr,
             'callsign' => $this->L1callsign,
-            'dof' => $this->l1_origin_dof,
+            'origin_dof' => $this->l1_origin_dof,
+            'destination_dof' => $this->l1_destination_dof,
+            'etd' => $this->l1_origin_etd,
+            'eta' => $this->l1_destination_etd
         ]);
         $leg2 = new Flight([
             'airline_id' => $this->airline->id,
@@ -269,8 +272,14 @@ class FlightSection extends Component
             'destination_id' => $this->l2_destination_name,
             'nbr' => $this->L2nbr,
             'callsign' => $this->L2callsign,
-            'dof' => $this->l2_origin_dof,
+            'origin_dof' => $this->l2_origin_dof,
+            'destination_dof' => $this->l2_destination_dof,
+            'etd' => $this->l2_origin_etd,
+            'eta' => $this->l2_destination_etd
         ]);
+        session(['leg1' => $leg1, 'leg2' => $leg2]);
+
+        return redirect()->route('requests.new.step3');
     }
 
 

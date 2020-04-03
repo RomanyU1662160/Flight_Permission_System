@@ -1,6 +1,6 @@
 <div>
 
-    <form action=" ">
+    <form wire:submit.prevent="submit">
         <div class="mt-4  card p-2">
             <h3 class="text-info font-weight-bolder ">Flight Details :</h3>
             <div class="alert">

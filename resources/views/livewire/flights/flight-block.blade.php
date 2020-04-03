@@ -20,16 +20,18 @@
                     <th> Airline : </th>
                     <td>{{$flight->airline->name}} </td>
                     <th> DOF: </th>
-                    <td class="float-right">{{ $flight->dof->format('D d-m-Y')}} </td>
+                    <td class="float-right">{{ $flight->origin_dof->format('D d-m-Y')}} </td>
 
                 </tr>
 
                 <tr class="border">
                     <th> Origin: </th>
-                    <td>{{$flight->origin->name}} {{ $flight->etd->format('H:i')}} </td>
+                    <td>{{$flight->origin->name}} {{ $flight->origin_dof->format('D d-m-Y')}} {{ $flight->etd->format('H:i')}} </td>
 
                     <th class=""> Destination: </th>
-                    <td class="float-right">{{ $flight->destination->name}} {{ $flight->eta}}</td>
+                    <td class="float-right">{{ $flight->destination->name}}
+                        {{ $flight->destination_dof->format('D d-m-Y')}}
+                        {{ $flight->eta}}</td>
                 </tr>
             </table>
 
