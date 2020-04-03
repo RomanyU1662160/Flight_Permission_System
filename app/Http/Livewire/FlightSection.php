@@ -47,6 +47,11 @@ class FlightSection extends Component
     public $l2_destination_etd;
 
 
+    public function mount()
+    {
+        $this->airline = session('airline');
+    }
+
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -95,10 +100,7 @@ class FlightSection extends Component
         $this->L2callsign = $this->airline->icao . $this->L2nbr;
     }
 
-    public function mount()
-    {
-        $this->airline = session('airline');
-    }
+
 
     public function setOriginIcaoIataValues()
     {
