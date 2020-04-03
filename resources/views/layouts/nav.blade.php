@@ -9,9 +9,9 @@
 
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                    <!-- Left Side Of Navbar -->
-                   <ul class="navbar-nav mr-auto">
-
-                       <li class="nav-item dropdown">
+                   <ul class="navbar-nav mr-auto ">
+                       <!-- Admin options dropdown -->
+                       <li class="nav-item dropdown border  m-2">
                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                {{__('Admin Options')}} <span class="caret"></span>
                            </a>
@@ -21,7 +21,19 @@
 
                        </li>
 
-                       <li class="nav-item">
+                       <!-- Agent Options dropdown -->
+                       <li class="nav-item dropdown border m-2">
+                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               {{__('Agent Options')}} <span class="caret"></span>
+                           </a>
+                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                               <a href="{{route('requests.new.step1')}}" class="dropdown-item"> Start new request </a>
+                           </div>
+
+                       </li>
+
+
+                       <li class="nav-item  m-2">
                            <a class="nav-link" href="{{ route('flights.all') }}">{{ __('Flights') }}</a>
                        </li>
 
@@ -32,7 +44,7 @@
                    <ul class="navbar-nav ml-auto">
                        <!-- Authentication Links -->
                        <li class="nav-item">
-                           <a class="nav-link" href="{{route('permissions.submitted')}}">{{ __('Submitted')}} <i class="fas fa-plane"></i></a>
+                           <a class="nav-link" href="{{route('requests.submitted')}}">{{ __('Requests')}} <i class="fas fa-plane"></i></a>
                        </li>
 
 

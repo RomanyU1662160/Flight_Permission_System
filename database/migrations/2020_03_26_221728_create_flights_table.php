@@ -22,9 +22,11 @@ class CreateFlightsTable extends Migration
                 $table->integer('origin_id')->nullable()->unsigned()->index();
                 $table->integer('agent_id')->nullable()->unsigned()->index();
                 $table->integer('destination_id')->nullable()->unsigned()->index();
+                $table->integer('leg_id')->nullable()->unsigned()->index();
                 $table->string('nbr')->nullable();
                 $table->string('callsign')->nullable();
-                $table->date('dof')->nullable();
+                $table->date('origin_dof')->nullable();
+                $table->date('destination_dof')->nullable();
                 $table->time('etd')->nullable();
                 $table->time('eta')->nullable();
                 $table->text('info')->nullable();
@@ -36,7 +38,7 @@ class CreateFlightsTable extends Migration
                 $table->foreign('destination_id')->references('id')->on('airports')->onDelete('cascade');
                 $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
                 $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
-
+                $table->foreign('leg_id')->references('id')->on('flights')->onDelete('cascade');
             });
         }
     }

@@ -46,5 +46,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 });
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
-    Route::get('/submitted', 'PermissionController@getSubmittedPermissions')->name('.submitted');
+});
+
+Route::group(['prefix' => 'request', 'middleware' => ['auth'], 'as' => 'requests'], function () {
+    Route::get('/submitted', 'RequestController@getSubmittedRequests')->name('.submitted');
+    Route::get('/new/step1', 'RequestController@getAirlineSection_step1')->name('.new.step1');
+    Route::post('/new/step1', 'RequestController@postAirlineSection_step1')->name('.new.step1');
+    Route::get('/new/step2', 'RequestController@getFlightSection_step2')->name('.new.step2');
+    Route::get('/new/step3', 'RequestController@getAircraftSection_step3')->name('.new.step3');
 });

@@ -8,14 +8,16 @@ use Faker\Generator as Faker;
 
 $factory->define(Flight::class, function (Faker $faker) {
     return [
-        'airline_id' => $faker->numberBetween(1, 4),
+        'airline_id' => $faker->numberBetween(1, 6),
         'permission_id' => $faker->numberBetween(1, 20),
         'aircraft_id' => $faker->numberBetween(1, 10),
         'origin_id' => $faker->numberBetween(1, 5),
         'destination_id' => $faker->numberBetween(1, 5),
         'nbr' => $faker->numberBetween(1, 500),
         'callsign' => $faker->text(5),
-        'dof' => $faker->date($format = 'Y-m-d', $min = 'now', $max = Carbon::now()->addMonth($faker->numberBetween(1, 4))),
+        'leg_id' => $faker->numberBetween(1, 50),
+        'origin_dof' => $faker->date($format = 'Y-m-d', $min = 'now', $max = Carbon::now()->addMonth($faker->numberBetween(1, 4))),
+        'destination_dof' => $faker->date($format = 'Y-m-d', $min = 'now', $max = Carbon::now()->addMonth($faker->numberBetween(1, 4))),
         'etd' => $faker->time($format = 'H:i', $min = 'now'),
         'eta' => $faker->time($format = 'H:i', $min = 'now'),
         'info' => $faker->text(100),
