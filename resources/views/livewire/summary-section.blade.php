@@ -1,4 +1,4 @@
-<div class=" ">
+<div class=" card ">
     <h2 class="card-title text-center"> Request summary </h2>
     <div class="card-body ">
 

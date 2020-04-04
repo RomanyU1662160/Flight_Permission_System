@@ -7,7 +7,7 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="name" class="font-weight-bold text-primary"> Airline Name</label>
+                        <label for="name" class="font-weight-bold text-primary"> Airline </label>
                         <select id="" class="form-control" wire:model="airline" wire:change="$emit('airlineChanged')">
                             <option value="" readonly> Select airline</option>
                             @foreach($airlines as $airline)
@@ -20,12 +20,12 @@
 
 
                     <div class="col">
-                        <label for="icao" class="font-weight-bold text-primary"> ICAO code</label>
+                        <label for="icao" class="font-weight-bold text-primary"> ICAO </label>
                         <input type="text" class="form-control text-uppercase" value="" wire:model="icao" wire:keyup="$emit('icaoFieldChanged')">
                         @error('icao') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col">
-                        <label for="iata" class="font-weight-bold text-primary"> IATA code</label>
+                        <label for="iata" class="font-weight-bold text-primary"> IATA </label>
                         <input type="text" class="form-control text-uppercase" wire:model.="iata" wire:keyup="$emit('iataFieldChanged')">
                         @error('iata') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

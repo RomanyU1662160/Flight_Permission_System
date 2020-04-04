@@ -7,7 +7,7 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="" class="font-weight-bold text-primary"> Flight Number: </label>
+                        <label for="" class="font-weight-bold text-primary"> Number: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text  text-uppercase">{{$airline->icao}}</div>
