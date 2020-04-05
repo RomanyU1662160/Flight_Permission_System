@@ -26,7 +26,7 @@
 <body>
     <div id="app">
         @include('layouts.nav')
-        <div class="container">
+        <div class="container-fluid">
             <main class="py-4">
                 @include('layouts.partials.flashes')
                 @yield('content')

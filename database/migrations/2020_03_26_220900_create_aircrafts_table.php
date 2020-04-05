@@ -25,7 +25,8 @@ class CreateAircraftsTable extends Migration
                 $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
                 $table->foreign('flight_id')->references('id')->on('flights')->onDelete('cascade');
             });
-        }}
+        }
+    }
 
     /**
      * Reverse the migrations.

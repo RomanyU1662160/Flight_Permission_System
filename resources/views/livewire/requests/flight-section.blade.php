@@ -7,7 +7,7 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="" class="font-weight-bold text-primary"> Flight Number: </label>
+                        <label for="" class="font-weight-bold text-primary"> Number: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text  text-uppercase">{{$airline->icao}}</div>
@@ -149,7 +149,7 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="L1nbr" class="font-weight-bold text-primary"> Flight Number: </label>
+                        <label for="L1nbr" class="font-weight-bold text-primary"> Number: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text  text-uppercase" wire:model="icao">{{$airline->icao}}</div>
@@ -204,7 +204,7 @@
 
                     <div class="col">
                         <label for="etd" class="font-weight-bold text-primary"> ETD: </label>
-                        <input type="time" id="" class="form-control" wire:model="l2_origin_etd">
+                        <input type="time" class="form-control" wire:model="l2_origin_etd">
                     </div>
 
                 </div>
@@ -250,6 +250,7 @@
         @endif
         <div class="alert">
             <button type=submit class="btn btn-info float-right">Save and Continue</button>
+            <a href="{{ URL::previous() }}" class="btn btn-outline-info float-left">Back</a>
         </div>
 
     </form>
