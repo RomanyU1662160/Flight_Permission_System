@@ -46,9 +46,7 @@
 
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <h3 class="mb-0"> Flight details <i class="fas fa-chevron-down"></i> </h3>
-
             </button>
-
         </div>
         <div id="collapseTwo" class="collapse  {{request()->is('*/step2')? 'show' : ' '}} " aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
@@ -97,13 +95,8 @@
                         <th>To :</th>
                         <td> {{session('leg2.destination.name') }} </td>
                     </tr>
-
-
                 </table>
-
                 @endif
-
-
             </div>
         </div>
     </div>

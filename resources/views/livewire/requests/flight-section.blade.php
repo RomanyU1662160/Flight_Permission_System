@@ -149,7 +149,7 @@
 
                 <div class="form-row">
                     <div class="col">
-                        <label for="L1nbr" class="font-weight-bold text-primary"> Flight Number: </label>
+                        <label for="L1nbr" class="font-weight-bold text-primary"> Number: </label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text  text-uppercase" wire:model="icao">{{$airline->icao}}</div>

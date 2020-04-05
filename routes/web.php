@@ -55,4 +55,5 @@ Route::group(['prefix' => 'request', 'middleware' => ['auth'], 'as' => 'requests
     Route::post('/new/step1', 'RequestController@postAirlineSection_step1')->name('.new.step1');
     Route::get('/new/step2', 'RequestController@getFlightSection_step2')->name('.new.step2');
     Route::get('/new/step3', 'RequestController@getAircraftSection_step3')->name('.new.step3');
+    Route::get('/new/step4', 'RequestController@getDetailsSection_step4')->name('.new.step4');
 });
