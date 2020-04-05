@@ -13,7 +13,7 @@
 
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div id="collapseOne" class="collapse {{session('airline')? 'show' : '' }}" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
                 @if(Session::has('airline'))
                 <table class="table table-borderless table-hover">

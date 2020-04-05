@@ -204,7 +204,7 @@
 
                     <div class="col">
                         <label for="etd" class="font-weight-bold text-primary"> ETD: </label>
-                        <input type="time" id="" class="form-control" wire:model="l2_origin_etd">
+                        <input type="time" class="form-control" wire:model="l2_origin_etd">
                     </div>
 
                 </div>
@@ -250,6 +250,7 @@
         @endif
         <div class="alert">
             <button type=submit class="btn btn-info float-right">Save and Continue</button>
+            <a href="{{ URL::previous() }}" class="btn btn-outline-info float-left">Back</a>
         </div>
 
     </form>

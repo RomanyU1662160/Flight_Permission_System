@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class AircraftSection extends Component
 {
-    public  $leg1;
 
     public  $airline;
     public $reg;
@@ -14,7 +13,6 @@ class AircraftSection extends Component
     public function mount()
     {
         $this->airline = session('airline');
-        $this->leg1 = session("leg1");
     }
 
 

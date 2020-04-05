@@ -27,7 +27,7 @@
                                {{__('Agent Options')}} <span class="caret"></span>
                            </a>
                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                               <a href="{{route('requests.new.step1')}}" class="dropdown-item"> Start new request </a>
+                               <a href="{{route('requests.new.fresh')}}" class="dropdown-item"> Start new request </a>
                            </div>
 
                        </li>
