@@ -13,7 +13,7 @@
 
         </div>
 
-        <div id="collapseOne" class="collapse {{session('airline')? 'show' : '' }}" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div id="collapseOne" class="collapse {{request()->is('*/step1')? 'show' : ' '}}" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
                 @if(Session::has('airline'))
                 <table class="table table-borderless table-hover">
@@ -50,7 +50,7 @@
             </button>
 
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div id="collapseTwo" class="collapse  {{request()->is('*/step2')? 'show' : ' '}} " aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
                 @if(Session::has('leg1'))
                 <table class="table table-borderless table-hover">
@@ -64,6 +64,7 @@
                     <tr>
                         <th>From:</th>
                         <td class="border-right">{{session('leg1.origin.name') }} </td>
+
                         <th>To :</th>
                         <td> {{session('leg1.destination.name') }} </td>
                     </tr>
@@ -112,11 +113,11 @@
         <div class="card-header" id="headingThree">
 
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <h3 class="mb-0"> Route details <i class="fas fa-chevron-down float-right"></i> </h3>
+                <h3 class="mb-0"> Aircraft details <i class="fas fa-chevron-down float-right"></i> </h3>
             </button>
 
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div id="collapseThree" class="collapse  {{request()->is('*/step3')? 'show' : ' '}}" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
                 <table class="table">
                     <tr>
@@ -139,7 +140,7 @@
                 </button>
             </h2>
         </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div id="collapseFour" class="collapse  {{request()->is('*/step4')? 'show' : ' '}}" aria-labelledby="headingFour" data-parent="#accordionExample">
             <div class="card-body">
                 <table class="table">
                     <tr>
