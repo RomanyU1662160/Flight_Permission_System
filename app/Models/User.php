@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Submission;
 use App\Models\Role;
 use App\Models\Agent;
 use App\Models\Permission;
@@ -38,7 +39,7 @@ class User extends Authenticatable
 
     public function submissions()
     {
-        return $this->hasMany(Permission::class);
+        return $this->hasMany(Submission::class);
     }
 
     public function approvals()

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Airline;
-use App\Models\Flight;
-use App\Models\Permission;
+use App\Submission;
 use App\Models\User;
+use App\Models\Flight;
+use App\Models\Airline;
+use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
 
 class Agent extends Model
@@ -32,4 +33,8 @@ class Agent extends Model
         return $this->hasMany(Permission::class);
     }
 
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
 }

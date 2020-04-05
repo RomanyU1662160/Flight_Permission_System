@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Agent;
+use App\Submission;
 
+use App\Models\Agent;
 use App\Models\Airline;
 use App\Models\Airport;
 use App\Models\Purpose;
 use App\Models\Aircraft;
 use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class Flight extends Model
 {
@@ -35,6 +36,12 @@ class Flight extends Model
     {
         return $this->belongsTo(Permission::class);
     }
+
+    public function submission()
+    {
+        return $this->belongsTo(Submission::class);
+    }
+
 
     public function aircraft()
     {
