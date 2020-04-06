@@ -25,4 +25,11 @@ class Aircraft extends Model
     {
         return $this->hasOne(Flight::class);
     }
+
+    public function getReg()
+    {
+        $prefix = $this->country->prefix;
+        $fullReg = $prefix . $this->reg;
+        return $fullReg;
+    }
 }

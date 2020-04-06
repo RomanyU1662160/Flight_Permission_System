@@ -17,7 +17,10 @@ class AircraftSection extends Component
     public $capacity;
     public $type;
 
-    protected $listeners = ['countrySelected' => 'countrySelected'];
+    protected $listeners = [
+        'countrySelected' => 'countrySelected',
+        'aircraftSelected' => 'aircraftSelected'
+    ];
 
     public function mount($countries)
     {
@@ -31,8 +34,14 @@ class AircraftSection extends Component
         $country = Country::find($this->selectedCountry);
 
         $this->aircrafts = $country->aircrafts;
-
         return $this->prefix = $country->prefix . '-';
+    }
+
+    public function aircraftSelected()
+    {
+        $aircraft = Aircraft::find($this->reg);
+        $this->type = $aircraft->type;
+        $this->capacity = $aircraft->capacity;
     }
 
     //  Live validation
@@ -49,12 +58,6 @@ class AircraftSection extends Component
 
     public function submit()
     {
-        /* $aircraft = new Aircraft([
-            'country_id' => $this->selectedCountry,
-            'reg' => $this->prefix . $this->reg,
-            'type' => $this->type,
-            'capacity' => $this->capacity
-        ]);*/
         $aircraft = Aircraft::find($this->reg);
         session(['aircraft' => $aircraft]);
         return redirect()->route('requests.new.step4');
