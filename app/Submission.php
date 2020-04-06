@@ -7,11 +7,13 @@ use App\Models\Agent;
 use App\Models\State;
 use App\Models\Flight;
 use App\Models\Amendment;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Submission extends Model
 {
-
+    public $reference;
     protected $fillable = ['requester_id', 'approver_id', 'state_id', 'ref', 'info'];
 
     public function agent()
@@ -66,5 +68,34 @@ class Submission extends Model
     public function hasAmendment()
     {
         return  $this->amendments()->count() >= 1 ? true : false;
+    }
+
+    //method  to set the submission reference
+    private  function setRef($num = 1)
+    {
+        $latestSubmission  = Submission::latest()->first();
+        if ($latestSubmission) {
+            $latestRef =  $latestSubmission->id;
+        } else {
+            $latestRef = 0;
+        }
+        $reference = $latestRef + $num;
+        $this->reference = $reference;
+        return $reference;
+    }
+
+    // logic to create unique reference for new submission
+    private function createReference()
+    {
+        $ref = $this->setRef();
+        $currentTime = Carbon::now()->format('dmY');
+        $newRef = "CAA-" . $currentTime . '-00' . ($ref);
+        return $newRef;
+    }
+
+
+    public function getRef()
+    {
+        return $ref = $this->createReference();
     }
 }

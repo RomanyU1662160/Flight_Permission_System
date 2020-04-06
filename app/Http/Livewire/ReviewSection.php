@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Flight;
 use Carbon\Carbon;
 use App\Submission;
+use App\Models\Flight;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewSection extends Component
@@ -32,7 +33,7 @@ class ReviewSection extends Component
 
     public function handleLeg1($submissionId)
     {
-        dd($submissionId);
+
         $this->leg1 = new Flight($this->leg1);
         $this->leg1->save();
         //dd($this->leg1);
@@ -70,21 +71,28 @@ class ReviewSection extends Component
 
     public function handleNewSubmission()
     {
-        $latestSubmission = Submission::latest()->first();
+        /*
+       $latestSubmission = Submission::latest()->first();
         $currentYear = Carbon::now()->format('Y');
         if ($latestSubmission) {
-            $ref = 'CAA-' . $currentYear . '-' . Str::afterLast($latestSubmission->ref, '-');
+            $latestRef = Str::afterLast($latestSubmission->ref, '-');
+
+            $ref = 'CAA-' . $currentYear . '-' . $latestRef + 1;
+            dd($currentYear + 1);
         } else {
             $ref = 'CAA-' . $currentYear . '-001';
         }
+        */
+
+
 
         $newSubmission = new Submission([
             'requester_id' => $this->user->id,
             'approver_id' => null,
             'state_id' => 2,
-            'ref' => $ref,
             'info' => null,
         ]);
+        $newSubmission->ref = $newSubmission->getRef();
         $newSubmission->save();
         return $newSubmission;
     }
