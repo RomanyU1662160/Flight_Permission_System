@@ -22,7 +22,16 @@
                         <label for="name" class="font-weight-bold text-primary"> Registration </label>
                         <div class="input-group-prepend">
                             <input type="text" placeholder="country  letters" class="text-uppercase " wire:model="prefix">
-                            <input type="text" placeholder="registration " class="form-control   text-uppercase" wire:model="reg">
+
+                            <select class="form-control" wire:model="reg">
+                                <option value=""> Please select </option>
+                                @if($aircrafts)
+                                @foreach($aircrafts as $aircraft)
+                                <option value="{{$aircraft->id}}"> {{$aircraft->reg}}</option>
+                                @endforeach
+                                @endif
+                            </select>
+
                         </div>
                         @error('reg') <span class="text-danger">{{ $message }}</span> @enderror
                         @error('prefix') <span class="text-danger">{{ $message }}</span> @enderror

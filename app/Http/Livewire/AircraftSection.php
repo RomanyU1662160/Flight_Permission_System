@@ -11,6 +11,7 @@ class AircraftSection extends Component
     public $countries;
     public  $airline;
     public $reg;
+    public $aircrafts = [];
     public $prefix;
     public $selectedCountry;
     public $capacity;
@@ -28,7 +29,9 @@ class AircraftSection extends Component
     public function countrySelected()
     {
         $country = Country::find($this->selectedCountry);
-        // dd($country);
+
+        $this->aircrafts = $country->aircrafts;
+
         return $this->prefix = $country->prefix . '-';
     }
 
@@ -37,22 +40,22 @@ class AircraftSection extends Component
     {
         $this->validateOnly($field, [
             'prefix' => 'required|max:3',
-            'reg' => 'required|min:2|max:4',
+            'reg' => 'required|max:4',
             'selectedCountry' => 'required',
-            'capacity' => 'required|integer |digits_between:6,400
-',
+            'capacity' => 'required|integer',
             'type' => 'required',
         ]);
     }
 
     public function submit()
     {
-        $aircraft = new Aircraft([
+        /* $aircraft = new Aircraft([
             'country_id' => $this->selectedCountry,
             'reg' => $this->prefix . $this->reg,
             'type' => $this->type,
             'capacity' => $this->capacity
-        ]);
+        ]);*/
+        $aircraft = Aircraft::find($this->reg);
         session(['aircraft' => $aircraft]);
         return redirect()->route('requests.new.step4');
     }

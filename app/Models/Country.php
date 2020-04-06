@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Airline;
 use App\Models\Airport;
+use App\Models\Aircraft;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
@@ -20,4 +21,8 @@ class Country extends Model
         return $this->hasMany(Airline::class);
     }
 
+    public function aircrafts()
+    {
+        return $this->hasMany(Aircraft::class);
+    }
 }

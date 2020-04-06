@@ -20,7 +20,7 @@ class CreateSubmissionsTable extends Migration
                 $table->integer('approver_id')->nullable()->unsigned()->index();
                 $table->integer('state_id')->unsigned()->index();
                 $table->string('ref');
-                $table->text('info');
+                $table->text('info')->nullable();
                 $table->timestamps();
                 $table->foreign('requester_id')->references('id')->on('users')->onDelete('cascade');
                 $table->foreign('approver_id')->references('id')->on('users')->onDelete('cascade');
