@@ -39,6 +39,9 @@
 
 
                 </div>
+
+                <a href="{{route('requests.new.step1')}}" class="btn btn-link float-right"> edit <i class="far fa-edit"></i> </a>
+
             </div>
         </div>
         <!-- accordion2 -->
@@ -53,13 +56,15 @@
                 <div class="card-body">
                     @if(Session::has('leg1'))
                     <table class="table table-borderless table-hover table-responsive-sm">
+                        @if(session::has('leg1'))
                         <thead>
                             <th class="text-info"> Leg 1</th>
                         </thead>
                         <tr>
+                            @if(session::has('leg1.callsign'))
                             <th class="bg-info">Callsign:</th>
                             <td class="border-right">{{session('leg1.callsign') }} </td>
-
+                            @endif
                             @if(session::has('leg1.origin.name'))
                             <th class="bg-info">From:</th>
                             <td> {{session('leg1.origin.name') }} </td>
@@ -83,7 +88,11 @@
                             <th class="bg-info">DOF:</th>
                             <td> {{session('leg1.origin_dof')->format('D d-m-y') }} </td>
                             @endif
-
+                            @else
+                            <th class="text-warning">Please complete the flight details
+                                <a href="{{route('requests.new.step2')}}" class="btn btn-link float-right"> Flight details </a>
+                            </th>
+                            @endif
 
 
                         </tr>
@@ -118,11 +127,13 @@
                         </tr>
                         @endif
                     </table>
+                    <a href="{{route('requests.new.step2')}}" class="btn btn-link float-right"> edit <i class="far fa-edit"></i> </a>
                     @else
                     <p class="text-danger "> Please fill the flight details section
                         <a href="{{route('requests.new.step2')}}" class="btn btn-link">Flight section </a>
                     </p>
                     @endif
+
                 </div>
             </div>
         </div>
@@ -154,6 +165,7 @@
 
                         </tr>
                     </table>
+                    <a href="{{route('requests.new.step3')}}" class="btn btn-link float-right"> edit <i class="far fa-edit"></i> </a>
                     @else
                     <p class="text-danger "> Please fill the airline details section
                         <a href="{{route('requests.new.step1')}}" class="btn btn-link"> airline section </a>
@@ -164,8 +176,6 @@
                 </div>
             </div>
             </div.>
-
-
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
