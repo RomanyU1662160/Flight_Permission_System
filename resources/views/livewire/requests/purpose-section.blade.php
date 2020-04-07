@@ -1,17 +1,30 @@
 <div>
-    <div class="alert">
-        <label for="name" class="font-weight-bold text-primary"> Flight purposes </label>
+    <form wire:submit.prevent="submit">
 
-        <div class="row p-2">
-            @if(exist($purposes))
-            @foreach($purposes as $purpose)
-            <div class="custom-control custom-checkbox col-md-6 border-bottom ">
-                <input type="checkbox" class="custom-control-input" id="{{$purpose->id}}" name="{{$purpose->id}}" value="{{$purpose->id}}" />
-                <label class="custom-control-label" for="{{$purpose->id}}">{{$purpose->name}} </label>
+        <div class="mt-4 border card p-2">
+            <h3 class="text-info font-weight-bolder ">Flight Purpose:</h3>
+            <div class="alert">
+                <div class="form-row">
+                    <div class="col">
+
+
+                        <label for="purpose" class="font-weight-bold text-primary"> Flight purpose : </label>
+                        <select class="form-control" id="purpose" wire:model="selected" wire:change="$emit('purposeSelected')">
+                            <option value=""> Select Flight purpose </option>
+                            @foreach($purposes as $purpose)
+                            <option value="{{$purpose->id}}">{{ucfirst($purpose->name)}}</option>
+                            @endforeach
+                        </select>
+                        @error('purposes') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+
+                </div>
             </div>
-            @else
-            <p> No available purposes </p>
-            @endforeach
+
         </div>
-    </div>
+
+    </form>
+
+
 </div>

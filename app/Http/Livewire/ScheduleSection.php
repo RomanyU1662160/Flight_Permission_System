@@ -20,7 +20,6 @@ class ScheduleSection extends Component
     {
         $selectedPurpose = Purpose::find($this->selected);
         session(['purpose' => $selectedPurpose]);
-        dd(session('purpose'));
     }
 
     public function render()
