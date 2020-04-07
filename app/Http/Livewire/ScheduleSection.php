@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Models\Purpose;
 use Livewire\Component;
+use Illuminate\Support\Arr;
 
-class PurposeSection extends Component
+class ScheduleSection extends Component
 {
+
     public $selected;
 
 
@@ -22,7 +24,7 @@ class PurposeSection extends Component
 
     public function render()
     {
-        return view('livewire.requests.purpose-section', [
+        return view('livewire.requests.schedule-section', [
             'purposes' => Purpose::all()
         ]);
     }

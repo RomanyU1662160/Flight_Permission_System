@@ -22,7 +22,16 @@
                         <label for="name" class="font-weight-bold text-primary"> Registration </label>
                         <div class="input-group-prepend">
                             <input type="text" placeholder="country  letters" class="text-uppercase " wire:model="prefix">
-                            <input type="text" placeholder="registration " class="form-control   text-uppercase" wire:model="reg">
+
+                            <select class="form-control" wire:model="reg" wire:change="$emit('aircraftSelected')">
+                                <option value=""> Please select </option>
+                                @if($aircrafts)
+                                @foreach($aircrafts as $aircraft)
+                                <option value="{{$aircraft->id}}"> {{$aircraft->reg}}</option>
+                                @endforeach
+                                @endif
+                            </select>
+
                         </div>
                         @error('reg') <span class="text-danger">{{ $message }}</span> @enderror
                         @error('prefix') <span class="text-danger">{{ $message }}</span> @enderror
@@ -35,21 +44,19 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="type" class="font-weight-bold text-primary"> A/c type </label>
-                        <input type="text" wire:model="type" class="form-control" placeholder="e.g. A320..">
+                        <input type="text" wire:model="type" class="form-control" placeholder="e.g. A320.." readonly>
                         @error('type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="col">
                         <label for="capacity" class="font-weight-bold text-primary"> Capacity </label>
-                        <input type="number" class="form-control" placeholder="number of pax " wire:model="capacity">
+                        <input type="number" class="form-control" placeholder="number of pax " wire:model="capacity" readonly>
                         @error('capacity') <span class="text-danger">{{ $message }}</span> @enderror
-
                     </div>
                 </div>
             </div>
-
-
         </div>
+
         <div class="alert">
             <button type=submit class="btn btn-info float-right"> Continue</button>
             <a href="{{URL::previous()}}" class="btn btn-outline-info float-left">Back</a>

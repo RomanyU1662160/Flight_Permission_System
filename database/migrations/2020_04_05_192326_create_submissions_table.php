@@ -13,12 +13,21 @@ class CreateSubmissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('submissions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('submissions')) {
+            Schema::create('submissions', function (Blueprint $table) {
+                $table->id();
+                $table->integer('requester_id')->unsigned()->index();
+                $table->integer('approver_id')->nullable()->unsigned()->index();
+                $table->integer('state_id')->unsigned()->index();
+                $table->string('ref');
+                $table->text('info')->nullable();
+                $table->timestamps();
+                $table->foreign('requester_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('approver_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            });
+        }
     }
-
     /**
      * Reverse the migrations.
      *

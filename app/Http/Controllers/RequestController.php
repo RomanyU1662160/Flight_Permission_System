@@ -47,4 +47,10 @@ class RequestController extends Controller
 
         return view('requests.newRequestForm.reviewDetailsSection');
     }
+
+    /*  public function getDetailsSection_step5()
+    {
+
+        return view('requests.newRequestForm.reviewDetailsSection');
+    }*/
 }
