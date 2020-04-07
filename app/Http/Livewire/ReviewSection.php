@@ -36,6 +36,7 @@ class ReviewSection extends Component
 
         $this->leg1 = new Flight($this->leg1);
         $this->leg1->save();
+
         //dd($this->leg1);
         $this->leg1->update([
             "airline_id" => $this->airline->id,
@@ -45,6 +46,7 @@ class ReviewSection extends Component
             "submission_id" => $submissionId,
             "info" => null,
         ]);
+        $this->leg1->purposes()->attach(session('purpose'));
     }
 
     public function handleLeg2($submissionId)
@@ -64,6 +66,8 @@ class ReviewSection extends Component
             $this->leg1->update([
                 "leg_id" => $this->leg2->id,
             ]);
+
+            $this->leg2->purposes()->attach(session('purpose'));
         } else {
             return $this->leg2;
         }
@@ -71,20 +75,6 @@ class ReviewSection extends Component
 
     public function handleNewSubmission()
     {
-        /*
-       $latestSubmission = Submission::latest()->first();
-        $currentYear = Carbon::now()->format('Y');
-        if ($latestSubmission) {
-            $latestRef = Str::afterLast($latestSubmission->ref, '-');
-
-            $ref = 'CAA-' . $currentYear . '-' . $latestRef + 1;
-            dd($currentYear + 1);
-        } else {
-            $ref = 'CAA-' . $currentYear . '-001';
-        }
-        */
-
-
 
         $newSubmission = new Submission([
             'requester_id' => $this->user->id,
@@ -96,6 +86,7 @@ class ReviewSection extends Component
         $newSubmission->save();
         return $newSubmission;
     }
+
     public function submit()
     {
         $submission = $this->handleNewSubmission();

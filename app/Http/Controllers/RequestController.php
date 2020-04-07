@@ -45,12 +45,12 @@ class RequestController extends Controller
     public function getDetailsSection_step4()
     {
 
-        return view('requests.newRequestForm.scheduleDetailsSection');
+        return view('requests.newRequestForm.reviewDetailsSection');
     }
 
-    public function getDetailsSection_step5()
+    /*  public function getDetailsSection_step5()
     {
 
         return view('requests.newRequestForm.reviewDetailsSection');
-    }
+    }*/
 }

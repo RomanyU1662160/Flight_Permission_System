@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFlightsPurposesTable extends Migration
+class CreateFlightPurposeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFlightsPurposesTable extends Migration
      */
     public function up()
     {
-        Schema::create('flights_purposes', function (Blueprint $table) {
+        Schema::create('flight_purpose', function (Blueprint $table) {
             $table->id();
             $table->integer('flight_id')->unsigned()->index();
             $table->integer('purpose_id')->unsigned()->index();
