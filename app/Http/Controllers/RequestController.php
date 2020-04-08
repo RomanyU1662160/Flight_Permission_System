@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Flight;
 use App\Models\Country;
-use App\Models\Permission;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 
-class RequestController extends Controller
+class SubmissionController extends Controller
 {
 
     public function getSubmittedRequests()
     {
-        $permissions = Permission::submitted()->get();
-        return view('permissions.submitted', compact('permissions'));
+        $requests = Submission::paginate(2);
+        return view('requests.index', compact('requests'));
     }
 
     public function startNewRequest()
@@ -47,10 +47,4 @@ class RequestController extends Controller
 
         return view('requests.newRequestForm.reviewDetailsSection');
     }
-
-    /*  public function getDetailsSection_step5()
-    {
-
-        return view('requests.newRequestForm.reviewDetailsSection');
-    }*/
 }

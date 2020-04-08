@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Carbon\Carbon;
-use App\Submission;
+use App\Models\Submission;
 use App\Models\Flight;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -93,7 +93,8 @@ class ReviewSection extends Component
         //dd($submission->id);
         $this->handleLeg1($submission->id);
         $this->handleLeg2($submission->id);
-        return redirect()->back()->with('success', 'Your submission is successfully stored in the system');
+        session()->flash('success', 'Your submission is successfully stored in the system');
+        return redirect()->to('request/new/fresh/step1');
     }
 
 

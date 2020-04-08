@@ -14,6 +14,12 @@ class PurposesTableSeeder extends Seeder
     {
         DB::table('purposes')->insert([
             [
+                'name' => 'passenger',
+                'info' => 'Info about pax permission',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'over flying',
                 'info' => 'Info about over flying permission',
                 'created_at' => now(),
@@ -64,6 +70,5 @@ class PurposesTableSeeder extends Seeder
             ],
 
         ]);
-
     }
 }

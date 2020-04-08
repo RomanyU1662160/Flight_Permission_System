@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Submission;
+use App\Models\Submission;
 use App\Models\Amendment;
 use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;

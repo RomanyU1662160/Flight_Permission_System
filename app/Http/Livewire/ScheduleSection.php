@@ -13,7 +13,7 @@ class ScheduleSection extends Component
 
 
     protected $listeners = [
-        'purposeSelected' => 'handlePurposeSelected'
+        'purposeSelected' => 'handlePurposeSele cted'
     ];
 
     public function handlePurposeSelected()

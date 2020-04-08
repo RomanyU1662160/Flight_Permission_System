@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Submission;
+use App\Models\Submission;
 use App\Models\Role;
 use App\Models\Agent;
 use App\Models\Permission;
