@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
-    protected $fillable = ['airline_id', 'leg_id', 'agent_id', 'origin_id', 'destination_id', 'aircraft_id', 'nbr', 'callsign', 'origin_dof', 'destination_dof', 'etd', 'eta', 'info'];
+    protected $fillable = ['airline_id', 'leg_id', 'agent_id', 'origin_id', 'destination_id', 'submission_id', 'permission_id', 'aircraft_id', 'nbr', 'callsign', 'origin_dof', 'destination_dof', 'etd', 'eta', 'info'];
 
     protected  $dates = ['destination_dof', 'origin_dof', 'etd', 'eta'];
 

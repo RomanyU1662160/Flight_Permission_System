@@ -48,7 +48,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
 });
 
-Route::group(['prefix' => 'request', 'middleware' => ['auth'], 'as' => 'requests'], function () {
+Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'requests'], function () {
+    Route::get('/all', 'SubmissionController@index')->name('.all');
+    Route::get('/{submission}', 'SubmissionController@show')->name('.show');
+
     Route::get('/submitted', 'SubmissionController@getSubmittedRequests')->name('.submitted');
     Route::get('/new/fresh/step1', 'SubmissionController@startNewRequest')->name('.new.fresh');
     Route::get('/new/step1', 'SubmissionController@getAirlineSection_step1')->name('.new.step1');

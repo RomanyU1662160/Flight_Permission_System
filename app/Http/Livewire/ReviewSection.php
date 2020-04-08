@@ -37,7 +37,7 @@ class ReviewSection extends Component
         $this->leg1 = new Flight($this->leg1);
         $this->leg1->save();
 
-        //dd($this->leg1);
+        // dd($submissionId);
         $this->leg1->update([
             "airline_id" => $this->airline->id,
             "aircraft_id" => $this->aircraft->id,
@@ -51,7 +51,6 @@ class ReviewSection extends Component
 
     public function handleLeg2($submissionId)
     {
-
         if ($this->leg2) {
             $this->leg2 = new Flight($this->leg2);
             $this->leg2->save();
@@ -94,7 +93,7 @@ class ReviewSection extends Component
         $this->handleLeg1($submission->id);
         $this->handleLeg2($submission->id);
         session()->flash('success', 'Your submission is successfully stored in the system');
-        return redirect()->to('request/new/fresh/step1');
+        return redirect()->to('submission/new/step1');
     }
 
 

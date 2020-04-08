@@ -65,10 +65,7 @@ class Submission extends Model
         }
     }
 
-    public function hasAmendment()
-    {
-        return  $this->amendments()->count() >= 1 ? true : false;
-    }
+
 
     //method  to set the submission reference
     private  function setRef($num = 1)

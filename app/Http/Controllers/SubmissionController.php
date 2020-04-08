@@ -14,9 +14,16 @@ class SubmissionController extends Controller
     public function index()
     {
         $submissions =  Submission::paginate(6);
+
         return view('submissions.index', compact('submissions'));
     }
 
+
+    public function show(Submission $submission)
+    {
+
+        return view('submissions.details', compact('submission'));
+    }
 
     public function getSubmittedRequests()
     {

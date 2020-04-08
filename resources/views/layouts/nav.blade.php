@@ -36,15 +36,13 @@
                        <li class="nav-item  m-2">
                            <a class="nav-link" href="{{ route('flights.all') }}">{{ __('Flights') }}</a>
                        </li>
-
-
                    </ul>
 
                    <!-- Right Side Of Navbar -->
                    <ul class="navbar-nav ml-auto">
                        <!-- Authentication Links -->
                        <li class="nav-item">
-                           <a class="nav-link" href="{{route('requests.submitted')}}">{{ __('Requests')}} <i class="fas fa-plane"></i></a>
+                           <a class="nav-link" href="{{route('requests.all')}}">{{ __('Submissions')}} <i class="fas fa-plane"></i></a>
                        </li>
 
 
