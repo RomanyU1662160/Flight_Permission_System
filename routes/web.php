@@ -24,6 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Flights routes */
 Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'], function () {
     Route::get('/all', 'FlightController@index')->name('.all');
+    Route::get('/show/{flight}', 'FlightController@show')->name('.show');
+    Route::get('/approve/{flight}', 'FlightController@approve')->name('.approve');
+    Route::get('/reject/{flight}', 'FlightController@reject')->name('.reject');
+    Route::get('/pend/{flight}', 'FlightController@pend')->name('.pend');
+    Route::get('/underReview/{flight}', 'FlightController@underReview')->name('.underReview');
 });
 
 /* Flights routes */
