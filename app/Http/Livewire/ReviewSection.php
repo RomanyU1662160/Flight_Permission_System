@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Carbon\Carbon;
-use App\Submission;
+use App\Models\Submission;
 use App\Models\Flight;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -37,9 +37,10 @@ class ReviewSection extends Component
         $this->leg1 = new Flight($this->leg1);
         $this->leg1->save();
 
-        //dd($this->leg1);
+        // dd($submissionId);
         $this->leg1->update([
             "airline_id" => $this->airline->id,
+            "state_id" => 2,
             "aircraft_id" => $this->aircraft->id,
             "agent_id" => $this->user->agent_id,
             "leg_id" => null,
@@ -51,12 +52,12 @@ class ReviewSection extends Component
 
     public function handleLeg2($submissionId)
     {
-
         if ($this->leg2) {
             $this->leg2 = new Flight($this->leg2);
             $this->leg2->save();
             $this->leg2->update([
                 "airline_id" => $this->airline->id,
+                "state_id" => 2,
                 "aircraft_id" => $this->aircraft->id,
                 "agent_id" => $this->user->agent_id,
                 "leg_id" => $this->leg1->id,
@@ -93,7 +94,8 @@ class ReviewSection extends Component
         //dd($submission->id);
         $this->handleLeg1($submission->id);
         $this->handleLeg2($submission->id);
-        return redirect()->back()->with('success', 'Your submission is successfully stored in the system');
+        session()->flash('success', 'Your submission is successfully stored in the system');
+        return redirect()->to('submission/new/step1');
     }
 
 

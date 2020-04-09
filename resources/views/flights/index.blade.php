@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <livewire:flights-list>
 
-<livewire:flights-list>
-    @endsection
+</div>
+@endsection

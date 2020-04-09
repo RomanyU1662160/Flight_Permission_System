@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Submission;
+use App\Models\Submission;
 use App\Models\User;
 use App\Models\Flight;
 use App\Models\Airline;

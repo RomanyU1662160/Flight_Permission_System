@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Submission;
+use App\Models\Submission;
 use Faker\Generator as Faker;
 
 $factory->define(Submission::class, function (Faker $faker) {

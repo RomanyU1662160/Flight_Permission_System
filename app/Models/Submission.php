@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Models\User;
 use App\Models\Agent;
@@ -65,10 +65,7 @@ class Submission extends Model
         }
     }
 
-    public function hasAmendment()
-    {
-        return  $this->amendments()->count() >= 1 ? true : false;
-    }
+
 
     //method  to set the submission reference
     private  function setRef($num = 1)
@@ -97,5 +94,20 @@ class Submission extends Model
     public function getRef()
     {
         return $ref = $this->createReference();
+    }
+
+    protected function approvedFlights()
+    {
+        $approved = $this->flights->where('state_id', 1);
+        return $approved;
+    }
+
+
+    #//compare approved flights to total flights to check if all flights in the submission is approved
+    public function isApproved()
+    {
+        $approved = $this->approvedFlights();
+
+        return  $approved->count() == $this->flights->count() ? true : false;
     }
 }

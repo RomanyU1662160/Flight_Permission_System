@@ -24,6 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Flights routes */
 Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'], function () {
     Route::get('/all', 'FlightController@index')->name('.all');
+    Route::get('/show/{flight}', 'FlightController@show')->name('.show');
+    Route::get('/approve/{flight}', 'FlightController@approve')->name('.approve');
+    Route::get('/reject/{flight}', 'FlightController@reject')->name('.reject');
+    Route::get('/pend/{flight}', 'FlightController@pend')->name('.pend');
+    Route::get('/underReview/{flight}', 'FlightController@underReview')->name('.underReview');
 });
 
 /* Flights routes */
@@ -48,12 +53,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
 });
 
-Route::group(['prefix' => 'request', 'middleware' => ['auth'], 'as' => 'requests'], function () {
-    Route::get('/submitted', 'RequestController@getSubmittedRequests')->name('.submitted');
-    Route::get('/new/fresh/step1', 'RequestController@startNewRequest')->name('.new.fresh');
-    Route::get('/new/step1', 'RequestController@getAirlineSection_step1')->name('.new.step1');
-    Route::post('/new/step1', 'RequestController@postAirlineSection_step1')->name('.new.step1');
-    Route::get('/new/step2', 'RequestController@getFlightSection_step2')->name('.new.step2');
-    Route::get('/new/step3', 'RequestController@getAircraftSection_step3')->name('.new.step3');
-    Route::get('/new/step4', 'RequestController@getDetailsSection_step4')->name('.new.step4');
+Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'requests'], function () {
+    Route::get('/all', 'SubmissionController@index')->name('.all');
+    Route::get('/{submission}', 'SubmissionController@show')->name('.show');
+
+    Route::get('/submitted', 'SubmissionController@getSubmittedRequests')->name('.submitted');
+    Route::get('/new/fresh/step1', 'SubmissionController@startNewRequest')->name('.new.fresh');
+    Route::get('/new/step1', 'SubmissionController@getAirlineSection_step1')->name('.new.step1');
+    Route::post('/new/step1', 'SubmissionController@postAirlineSection_step1')->name('.new.step1');
+    Route::get('/new/step2', 'SubmissionController@getFlightSection_step2')->name('.new.step2');
+    Route::get('/new/step3', 'SubmissionController@getAircraftSection_step3')->name('.new.step3');
+    Route::get('/new/step4', 'SubmissionController@getDetailsSection_step4')->name('.new.step4');
 });
