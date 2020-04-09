@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Submission;
+use App\Models\Flight;
 use App\Models\Amendment;
 use App\Models\Permission;
+use App\Models\Submission;
 use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
@@ -17,6 +18,11 @@ class State extends Model
     public function submissions()
     {
         return $this->hasMany(Submission::class);
+    }
+
+    public function flights()
+    {
+        return $this->hasMany(Flight::class);
     }
 
     public function amendments()

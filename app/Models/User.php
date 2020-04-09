@@ -58,6 +58,11 @@ class User extends Authenticatable
         }
     }
 
+    public function getFullName()
+    {
+        return $this->fname . $this->lname;
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
