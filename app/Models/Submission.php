@@ -95,4 +95,19 @@ class Submission extends Model
     {
         return $ref = $this->createReference();
     }
+
+    protected function approvedFlights()
+    {
+        $approved = $this->flights->where('state_id', 1);
+        return $approved;
+    }
+
+
+    #//compare approved flights to total flights to check if all flights in the submission is approved
+    public function isApproved()
+    {
+        $approved = $this->approvedFlights();
+
+        return  $approved->count() == $this->flights->count() ? true : false;
+    }
 }
