@@ -2,20 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\Submission;
-
 use App\Models\Agent;
+
+use App\Models\State;
 use App\Models\Airline;
 use App\Models\Airport;
 use App\Models\Purpose;
 use App\Models\Aircraft;
 use App\Models\Permission;
+use App\Models\Submission;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Flight extends Model
 {
-    protected $fillable = ['airline_id', 'leg_id', 'agent_id', 'origin_id', 'destination_id', 'submission_id', 'permission_id', 'aircraft_id', 'nbr', 'callsign', 'origin_dof', 'destination_dof', 'etd', 'eta', 'info'];
+    protected $fillable = ['airline_id', 'leg_id', 'agent_id', 'origin_id', 'destination_id', 'submission_id', 'state_id', 'permission_id', 'aircraft_id', 'nbr', 'callsign', 'origin_dof', 'destination_dof', 'etd', 'eta', 'info'];
 
     protected  $dates = ['destination_dof', 'origin_dof', 'etd', 'eta'];
 
@@ -29,6 +30,11 @@ class Flight extends Model
     public function leg()
     {
         return $this->hasOne(Flight::class, 'leg_id', 'id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
     }
 
 
@@ -66,5 +72,10 @@ class Flight extends Model
     public function agent()
     {
         return $this->belongsTo(Agent::class);
+    }
+
+    public function getRequester()
+    {
+        return $this->agent ? $this->agent : $this->airline;
     }
 }
