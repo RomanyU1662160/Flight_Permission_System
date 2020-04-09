@@ -18,6 +18,7 @@ class CreateFlightsTable extends Migration
                 $table->id();
                 $table->integer('airline_id')->nullable()->unsigned()->index();
                 $table->integer('permission_id')->nullable()->unsigned()->index();
+                $table->integer('state_id')->nullable()->unsigned()->index();
                 $table->integer('submission_id')->nullable()->unsigned()->index();
                 $table->integer('aircraft_id')->nullable()->unsigned()->index();
                 $table->integer('origin_id')->nullable()->unsigned()->index();
@@ -41,6 +42,7 @@ class CreateFlightsTable extends Migration
                 $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
                 $table->foreign('leg_id')->references('id')->on('flights')->onDelete('cascade');
                 $table->foreign('submission_id')->references('id')->on('submissions')->onDelete('cascade');
+                $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             });
         }
     }
