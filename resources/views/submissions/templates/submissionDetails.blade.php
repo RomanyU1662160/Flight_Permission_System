@@ -8,10 +8,11 @@
 
       <div class="col-md-4 card border">
           <h3 class="text-center"> Submission details</h3>
+
           <table class="table table-hover  table-responsive-md">
               <tr>
                   <th> State : </th>
-                  <td class=""> <span class="badge badge-warning p-2"> {{$submission->state->name}}</span> </td>
+                  <td class=""> <span class="badge p-2 {{$submission->isApproved() ? 'badge-success' : 'badge-warning'}}"> {{$submission->isApproved() ? "Fully approved" : $submission->state->name}}</span> </td>
                   <td class=""> </td>
               </tr>
 
@@ -31,7 +32,14 @@
               </tr>
 
           </table>
-
+          @if(isset($submission->info))
+          <div class="card mt-2">
+              <h3 class="text-info text-center">Info </h3>
+              <p>
+                  {{$submission->info}}
+              </p>
+          </div>
+          @endif
 
       </div>
 
