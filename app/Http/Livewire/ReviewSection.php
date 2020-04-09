@@ -40,6 +40,7 @@ class ReviewSection extends Component
         // dd($submissionId);
         $this->leg1->update([
             "airline_id" => $this->airline->id,
+            "state_id" => 2,
             "aircraft_id" => $this->aircraft->id,
             "agent_id" => $this->user->agent_id,
             "leg_id" => null,
@@ -56,6 +57,7 @@ class ReviewSection extends Component
             $this->leg2->save();
             $this->leg2->update([
                 "airline_id" => $this->airline->id,
+                "state_id" => 2,
                 "aircraft_id" => $this->aircraft->id,
                 "agent_id" => $this->user->agent_id,
                 "leg_id" => $this->leg1->id,
