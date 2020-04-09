@@ -1,11 +1,11 @@
 <div class="card mt-2">
     <div class="card-header ">
         <div class="row">
-            <div class="col-md-6">
-                <h3 class="card-title  float-left">Reference: {{$submission->ref}} </h3>
+            <div class="col-md-10">
+                <h4 class="card-title  float-left">Reference: {{$submission->ref}} </h4>
             </div>
-            <div class="col-md-6">
-                <span class="card-title float-right p-2  {{$submission->applyStyle() }}"> {{ucfirst($submission->state->name)}} </h3>
+            <div class="col-md-2">
+                <span class="card-title float-right p-1 rounded {{$submission->applyStyle() }}"> {{ucfirst($submission->state->name)}} </h3>
             </div>
         </div>
     </div>
