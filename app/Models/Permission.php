@@ -43,7 +43,7 @@ class Permission extends Model
     }
 
 
-    public function approval()
+    public function approver()
     {
         return $this->belongsTo(User::class, 'approver_id', 'id');
     }
@@ -53,9 +53,9 @@ class Permission extends Model
         if ($this->state->name === "under review") {
             return "bg-warning";
         } elseif ($this->state->name === "approved") {
-            return "bg-success";
+            return "bg-success text-white rounded";
         } else {
-            return "bg-danger";
+            return "bg-danger text-white";
         }
     }
 
@@ -63,5 +63,14 @@ class Permission extends Model
     {
 
         return  $this->amendments()->count() >= 1 ? true : false;
+    }
+
+    public function isApproved()
+    {
+        $flights = $this->flights;
+        foreach ($flights as $flight) {
+            return   $flight->state == 1 ? true : false;
+        }
+        return false;
     }
 }
