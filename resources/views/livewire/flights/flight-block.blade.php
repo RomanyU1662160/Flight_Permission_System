@@ -63,10 +63,7 @@
                         {{ $flight->eta->format('H:i')}}</td>
                 </tr>
             </table>
-
-
         </div>
-
     </div>
 
     <div class="card-footer">
@@ -77,7 +74,7 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flight{{$flight->id}}">
             CAA options
         </button>
-
+        <a href="{{route('amendments.add', $flight)}}" class="btn btn-info float-right"> Amend flight </a>
     </div>
 
 </div>

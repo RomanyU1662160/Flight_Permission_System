@@ -38,4 +38,33 @@
          @include('permissions.templates.permissionTemplate')
      </div>
      @endif
+
+
+     <div class="col-md-6  card ">
+         <div class="alert">
+             <h3 class="text-center text-info font-weight-bold"> Amendments History </h3>
+         </div>
+
+         @if($flight->amendments->count())
+         <table class="table table-hover">
+             @foreach($flight->amendments as $amendment)
+             <tr class="border">
+                 <td> <strong>Amended by : </strong> {{$amendment->requester->getFullName()}} - ( {{$amendment->requester->getCompany()->name}} )</td>
+
+                 <td class="border-left">
+
+                     <strong> Last Update: </strong>
+                     {{$amendment->updated_at->format('D d-m-Y')}}
+                     ({{$amendment->updated_at->diffForHumans()}})
+                 </td>
+             </tr>
+             @endforeach
+
+         </table>
+         @else
+         <p class="text-info text-center"> This flight has no amendments </p>
+
+         @endif
+     </div>
+
  </div>
