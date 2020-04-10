@@ -68,21 +68,13 @@
         <a href="{{route('flights.show', $flight)}}" class="btn btn-outline-info float-right">view details <i class=" ml-2 fas fa-angle-double-right"></i> </a>
         @endif
 
-        @if( $flight->state_id !==1)
-        <a href="{{route('flights.approve', $flight)}}" class="ml-2 btn btn-outline-success float-left">Approve <i class="fas fa-thumbs-up text-success"></i> </a>
-        @endif
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flight{{$flight->id}}">
+            CAA options
+        </button>
 
-        @if( $flight->state_id !==2)
-        <a href="{{route('flights.underReview', $flight)}}" class="ml-2 btn bg-secondary btn-outline-warning float-left"> Under review <i class="far fa-question-circle text-warning"></i> </a>
-        @endif
 
-        @if( $flight->state_id !==3)
-        <a href="{{route('flights.pend', $flight)}}" class="ml-2 btn btn-outline-danger float-left"> Pending <i class="fas fa-hourglass-end text-danger"></i></i> </a>
-        @endif
-
-        @if( $flight->state_id !==4)
-        <a href="{{route('flights.reject', $flight)}}" class="ml-2 btn btn-outline-danger float-left"> Reject <i class="fas fa-thumbs-down text-danger"></i> </a>
-        @endif
     </div>
 
 </div>
+
+@include('flights.templates.modals.CAAButtonsModal')

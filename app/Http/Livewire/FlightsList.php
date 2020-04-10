@@ -22,7 +22,7 @@ class FlightsList extends Component
     public function render()
     {
         return view('livewire.flights.flights-list', [
-            'flights' => Flight::latest()->paginate(12)
+            'flights' => Flight::latest()->paginate(4)
         ]);
     }
 }

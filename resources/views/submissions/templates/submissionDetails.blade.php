@@ -21,7 +21,7 @@
                   <td>{{$submission->requester->fname}} </td>
 
                   <th> Agent : </th>
-                  <td>{{$submission->requester->getCompany()}} </td>
+                  <td>{{$submission->requester->getCompany()->name}} </td>
               </tr>
               <tr>
                   <th> Submitted on: </th>

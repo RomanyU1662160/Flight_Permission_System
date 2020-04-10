@@ -21,6 +21,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboard'], function () {
+    Route::get('/{user}', 'DashboardController@index')->name('.index');
+    Route::get('/companySubmissions/{user}', 'DashboardController@getCompanySubmissions')->name('.companySubmissions');
+    Route::get('/userSubmissions/{user}', 'DashboardController@getUserSubmissions')->name('.userSubmissions');
+    Route::get('/companyPermissions/{user}', 'DashboardController@getCompanyPermissions')->name('.companyPermissions');
+});
+
 /* Flights routes */
 Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'], function () {
     Route::get('/all', 'FlightController@index')->name('.all');
@@ -51,6 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 });
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
+    Route::get('/{permission}', 'PermissionController@show')->name('.show');
 });
 
 Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'requests'], function () {

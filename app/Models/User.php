@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function submissions()
     {
-        return $this->hasMany(Submission::class);
+        return $this->hasMany(Submission::class, 'requester_id');
     }
 
     public function approvals()
@@ -50,9 +50,9 @@ class User extends Authenticatable
     public function getCompany()
     {
         if ($this->agent) {
-            return $this->agent->name;
+            return $this->agent;
         } elseif ($this->airline) {
-            return  $this->airline->name;
+            return  $this->airline;
         } else {
             return "CAA officer";
         }
