@@ -84,4 +84,9 @@ class Flight extends Model
     {
         return $this->agent ? $this->agent : $this->airline;
     }
+
+    public function hasAmendment()
+    {
+        return $this->amendments ? true : false;
+    }
 }
