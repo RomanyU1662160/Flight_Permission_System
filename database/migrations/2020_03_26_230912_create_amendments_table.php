@@ -16,13 +16,13 @@ class CreateAmendmentsTable extends Migration
         if (!Schema::hasTable('amendments')) {
             Schema::create('amendments', function (Blueprint $table) {
                 $table->id();
-                $table->integer('permission_id')->unsigned()->index();
-                $table->integer('requester_id')->unsigned()->index();
-                $table->integer('approver_id')->unsigned()->index();
+                $table->integer('permission_id')->nullable()->unsigned()->index();
+                $table->integer('requester_id')->nullable()->unsigned()->index();
+                $table->integer('approver_id')->nullable()->unsigned()->index();
                 $table->integer('state_id')->unsigned()->index();
                 $table->integer('flight_id')->unsigned()->index();
-                $table->string('ref');
-                $table->text('info');
+                $table->string('ref')->nullable();
+                $table->text('info')->nullable();
                 $table->timestamps();
                 $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
                 $table->foreign('requester_id')->references('id')->on('users')->onDelete('cascade');

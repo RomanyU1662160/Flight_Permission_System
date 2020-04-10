@@ -61,6 +61,11 @@ Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permi
     Route::get('/{permission}', 'PermissionController@show')->name('.show');
 });
 
+Route::group(['prefix' => 'amendment', 'middleware' => ['auth'], 'as' => 'amendments'], function () {
+    Route::get('/add/{flight}', 'AmendmentController@create')->name('.add');
+    Route::post('/add/{flight}', 'AmendmentController@store')->name('.add');
+});
+
 Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'requests'], function () {
     Route::get('/all', 'SubmissionController@index')->name('.all');
     Route::get('/{submission}', 'SubmissionController@show')->name('.show');

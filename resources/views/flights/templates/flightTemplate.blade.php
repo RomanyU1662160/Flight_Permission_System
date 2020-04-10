@@ -18,7 +18,6 @@
 
 
             <table class="table table-hover">
-
                 <tr class="border">
                     <th> Airline : </th>
                     <td>{{$flight->airline->name}} </td>
@@ -31,9 +30,6 @@
                         <p class="text-info"> Not available </p>
                         @endif
                     </td>
-
-
-
                 </tr>
 
                 <tr class="border">
@@ -68,10 +64,10 @@
         <a href="{{route('flights.show', $flight)}}" class="btn btn-outline-info float-right">view details <i class=" ml-2 fas fa-angle-double-right"></i> </a>
         @endif
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flight{{$flight->id}}">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#flight{{$flight->id}}">
             CAA options
         </button>
-
+        <a href="" class="btn btn-info float-right"> Amend flight </a>
 
     </div>
 

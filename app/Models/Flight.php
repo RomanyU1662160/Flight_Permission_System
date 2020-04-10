@@ -28,7 +28,7 @@ class Flight extends Model
 
     public function amendments()
     {
-        return $this->belongsToMany(Amendment::class);
+        return $this->hasMany(Amendment::class);
     }
 
 
