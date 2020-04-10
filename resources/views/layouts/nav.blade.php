@@ -8,8 +8,10 @@
                </button>
 
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                    <!-- Left Side Of Navbar -->
                    <ul class="navbar-nav mr-auto ">
+                       @auth
                        <!-- Admin options dropdown -->
                        <li class="nav-item dropdown border  m-2">
                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -41,21 +43,25 @@
                            </div>
 
                        </li>
-
+                       <li class="nav-item  m-2">
+                           <a class="nav-link" href="{{ route('dashboard.index', Auth::user()) }}">{{ __('My Dashboard') }}</a>
+                       </li>
 
                        <li class="nav-item  m-2">
                            <a class="nav-link" href="{{ route('flights.all') }}">{{ __('Flights') }}</a>
                        </li>
+                       @endauth
                    </ul>
 
                    <!-- Right Side Of Navbar -->
                    <ul class="navbar-nav ml-auto">
                        <!-- Authentication Links -->
+                       @auth
                        <li class="nav-item">
                            <a class="nav-link" href="{{route('requests.all')}}">{{ __('Submissions')}} <i class="fas fa-plane"></i></a>
                        </li>
 
-
+                       @endauth
                        @guest
                        <li class="nav-item">
                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

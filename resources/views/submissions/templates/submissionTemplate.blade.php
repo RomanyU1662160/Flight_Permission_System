@@ -5,7 +5,9 @@
                 <h4 class="card-title  float-left">Reference: {{$submission->ref}} </h4>
             </div>
             <div class="col-md-2">
-                <span class="card-title float-right p-1 rounded {{$submission->applyStyle() }}"> {{ucfirst($submission->state->name)}} </h3>
+                <span class="card-title float-right p-1 rounded {{$submission->isApproved() ? 'badge-success' : 'badge-warning'}}">
+
+                    {{$submission->isApproved() ? "Fully approved" : ucfirst( $submission->state->name)}} </h3>
             </div>
         </div>
     </div>
@@ -25,7 +27,7 @@
                 </tr>
 
                 <tr class="border">
-                    <td> <strong>Submitted by : </strong> {{$submission->requester->username}} - ( {{$submission->requester->getCompany()}} )</td>
+                    <td> <strong>Submitted by : </strong> {{$submission->requester->username}} - ( {{$submission->requester->getCompany()->name}} )</td>
 
                     <td class="border-left">
 

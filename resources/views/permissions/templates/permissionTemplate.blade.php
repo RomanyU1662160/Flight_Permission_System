@@ -34,6 +34,6 @@
     </div>
 
     <div class="card-footer">
-        <a href="{{route('requests.show', $permission)}}" class="btn btn-outline-info float-right">view details <i class=" ml-2 fas fa-angle-double-right"></i> </a>
+        <a href="{{route('permissions.show', $permission)}}" class="btn btn-outline-info float-right">view details <i class=" ml-2 fas fa-angle-double-right"></i> </a>
     </div>
 </div>

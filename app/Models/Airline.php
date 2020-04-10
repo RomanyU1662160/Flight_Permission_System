@@ -13,6 +13,17 @@ class Airline extends Model
 {
     protected $fillable = ['country_id', 'name', 'icao', 'iata', 'info'];
 
+    public function permissions()
+    {
+        return $this->hasManyThrough(Permission::class, User::class, 'agent_id', 'requester_id');
+    }
+
+    public function submissions()
+    {
+        return $this->hasManyThrough(Submission::class, User::class, 'airline_id', 'requester_id');
+    }
+
+
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -36,5 +47,4 @@ class Airline extends Model
     {
         return $this->hasMany(User::class);
     }
-
 }

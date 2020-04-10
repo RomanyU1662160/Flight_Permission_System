@@ -13,6 +13,16 @@ class Agent extends Model
 {
     protected $fillable = ['name', 'website', 'sita', 'aftn'];
 
+    public function permissions()
+    {
+        return $this->hasManyThrough(Permission::class, User::class, 'agent_id', 'requester_id');
+    }
+
+    public function submissions()
+    {
+        return $this->hasManyThrough(Submission::class, User::class, 'agent_id', 'requester_id');
+    }
+
     public function flights()
     {
         return $this->hasMany(Flight::class);
@@ -26,15 +36,5 @@ class Agent extends Model
     public function officers()
     {
         return $this->hasMany(User::class);
-    }
-
-    public function permissions()
-    {
-        return $this->hasMany(Permission::class);
-    }
-
-    public function submissions()
-    {
-        return $this->hasMany(Submission::class);
     }
 }
