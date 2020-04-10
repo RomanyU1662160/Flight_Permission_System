@@ -24,4 +24,15 @@ class Amendment extends Model
     {
         return $this->belongsTo(Flight::class);
     }
+
+    public function requester()
+    {
+        return $this->belongsTo(User::class, 'requester_id', 'id');
+    }
+
+
+    public function approval()
+    {
+        return $this->belongsTo(User::class, 'approver_id', 'id');
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\Flight;
 use App\Models\Airport;
 use App\Models\Purpose;
 use App\Models\Amendment;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,9 +48,12 @@ class AmendmentController extends Controller
             'approver_id' => null,
             'state_id' => 2,
         ]);
+        //  $ref = Str::replaceFirst('CAA', 'PER', $flight->submission->ref);
+
+        $ref = Str::replaceFirst('CAA', 'AMD',  $flight->submission->ref);
         $newAmendment = Amendment::create(
             [
-                'ref' => $flight->submission->ref . '-A',
+                'ref' => $ref,
                 'requester_id' => Auth::user()->id,
                 'permission_id' => null,
                 'approver_id' => null,

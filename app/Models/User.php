@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Submission;
 use App\Models\Role;
 use App\Models\Agent;
+use App\Models\Amendment;
 use App\Models\Permission;
+use App\Models\Submission;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -45,6 +46,11 @@ class User extends Authenticatable
     public function approvals()
     {
         return $this->hasMany(Permission::class);
+    }
+
+    public function amendments()
+    {
+        return $this->hasMany(Amendment::class);
     }
 
     public function getCompany()

@@ -96,6 +96,7 @@
     </div>
 
     <div class="alert pt-4">
-        <button type="submit" class="btn btn-secondary text-info float-right font-weight-bolder p-2"> Submit Amendment </button>
+        <button type="submit" class="btn btn-outline-secondary text-info float-right font-weight-bolder p-2"> Submit Amendment <i class="fas fa-angle-double-right text-info"></i> </button>
+        <a href="{{ URL::previous() }}" class="btn btn-secondary text-info float-left"> <i class="fas fa-angle-double-left text-info"></i> Cancel </a>
     </div>
 </form>
