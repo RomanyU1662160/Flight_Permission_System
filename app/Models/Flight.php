@@ -9,6 +9,7 @@ use App\Models\Airline;
 use App\Models\Airport;
 use App\Models\Purpose;
 use App\Models\Aircraft;
+use App\Models\Amendment;
 use App\Models\Permission;
 use App\Models\Submission;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,11 @@ class Flight extends Model
     public function purposes()
     {
         return $this->belongsToMany(Purpose::class);
+    }
+
+    public function amendments()
+    {
+        return $this->belongsToMany(Amendment::class);
     }
 
 
