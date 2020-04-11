@@ -22,5 +22,9 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "autocomplete.js": "^0.37.1",
+        "algoliasearch": "^3.35.1"
     }
 }

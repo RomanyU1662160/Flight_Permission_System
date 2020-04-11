@@ -12,8 +12,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @routes
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,9 +28,12 @@
 <body>
     <div id="app">
         @include('layouts.nav')
+
         <div class="container-fluid">
             <main class="py-4">
                 @include('layouts.partials.flashes')
+
+
                 @yield('content')
             </main>
         </div>
@@ -38,7 +43,6 @@
 
     <!-- Font awesome  -->
     <script src="https://kit.fontawesome.com/4e8530644b.js" crossorigin="anonymous"></script>
-
 
 </body>
 

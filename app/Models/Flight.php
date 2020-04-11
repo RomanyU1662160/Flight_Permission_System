@@ -12,11 +12,15 @@ use App\Models\Aircraft;
 use App\Models\Amendment;
 use App\Models\Permission;
 use App\Models\Submission;
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Flight extends Model
 {
+
+    use Searchable;
+
     protected $fillable = ['airline_id', 'leg_id', 'agent_id', 'origin_id', 'destination_id', 'submission_id', 'state_id', 'permission_id', 'aircraft_id', 'nbr', 'callsign', 'origin_dof', 'destination_dof', 'etd', 'eta', 'info'];
 
     protected  $dates = ['destination_dof', 'origin_dof', 'etd', 'eta'];
@@ -88,5 +92,20 @@ class Flight extends Model
     public function hasAmendment()
     {
         return $this->amendments ? true : false;
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        $array['amendments'] = $this->amendments;
+        $array['leg'] = $this->leg;
+        $array['permission'] = $this->permission;
+        $array['submission'] = $this->submission;
+        $array['aircraft'] = $this->aircraft;
+        $array['airline'] = $this->airline;
+        $array['origin'] = $this->origin;
+        $array['destination'] = $this->destination;
+        $array['agent'] = $this->agent;
+        return $array;
     }
 }
