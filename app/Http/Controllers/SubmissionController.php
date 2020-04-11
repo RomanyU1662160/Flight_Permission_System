@@ -8,6 +8,7 @@ use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+
 class SubmissionController extends Controller
 {
     public function index()
