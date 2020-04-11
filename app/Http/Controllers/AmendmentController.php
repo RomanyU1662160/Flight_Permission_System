@@ -42,6 +42,17 @@ class AmendmentController extends Controller
      */
     public function store(Request $request, Flight $flight)
     {
+        $request->validate([
+            'purpose' => 'required',
+            'nbr' => 'numeric|required',
+            'origin' => 'string|required',
+            'destination' => 'string|required',
+            'origin_dof' => 'required|date|after_or_equal:today',
+            'destination_dof' => 'required|date|after_or_equal:today',
+            'etd' => 'required',
+            'eta' => 'required',
+        ]);
+
         $data = $request->all();
         $flight->submission->update([
             'requester_id' => Auth::user()->id,

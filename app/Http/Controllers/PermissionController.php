@@ -84,4 +84,12 @@ class PermissionController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+
+        $results = Permission::where('ref', 'like', '%' . $query)->get();
+        return view('dashboard.search.permissions.permissionsResults', compact('results'));
+    }
 }

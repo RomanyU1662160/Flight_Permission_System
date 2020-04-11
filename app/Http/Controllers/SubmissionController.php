@@ -59,4 +59,12 @@ class SubmissionController extends Controller
 
         return view('submissions.newRequestForm.reviewDetailsSection');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+
+        $results = Submission::where('ref', 'like', '%' . $query)->get();
+        return view('dashboard.search.submissons.submissionResults', compact('results'));
+    }
 }
