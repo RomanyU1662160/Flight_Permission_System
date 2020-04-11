@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
     Route::get('/{permission}', 'PermissionController@show')->name('.show');
+    Route::post('/search', 'PermissionController@search')->name('.search');
 });
 
 Route::group(['prefix' => 'amendment', 'middleware' => ['auth'], 'as' => 'amendments'], function () {
@@ -69,7 +70,6 @@ Route::group(['prefix' => 'amendment', 'middleware' => ['auth'], 'as' => 'amendm
 Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'requests'], function () {
     Route::get('/all', 'SubmissionController@index')->name('.all');
     Route::get('/{submission}', 'SubmissionController@show')->name('.show');
-
     Route::get('/submitted', 'SubmissionController@getSubmittedRequests')->name('.submitted');
     Route::get('/new/fresh/step1', 'SubmissionController@startNewRequest')->name('.new.fresh');
     Route::get('/new/step1', 'SubmissionController@getAirlineSection_step1')->name('.new.step1');
@@ -77,4 +77,5 @@ Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'reque
     Route::get('/new/step2', 'SubmissionController@getFlightSection_step2')->name('.new.step2');
     Route::get('/new/step3', 'SubmissionController@getAircraftSection_step3')->name('.new.step3');
     Route::get('/new/step4', 'SubmissionController@getDetailsSection_step4')->name('.new.step4');
+    Route::post('/search', 'SubmissionController@search')->name('.search');
 });
