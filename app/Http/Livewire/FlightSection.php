@@ -85,8 +85,9 @@ class FlightSection extends Component
 
     public function toggleHasReturn()
     {
-        // dd($this->hasReturn);
-        $this->hasReturn = !$this->hasReturn;
+        //dd($this->hasReturn);
+
+        return    $this->hasReturn = !$this->hasReturn;
     }
 
     public function setL1Callsign()

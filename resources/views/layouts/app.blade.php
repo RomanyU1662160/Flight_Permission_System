@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@livewireStyles
+
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     @routes
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -24,6 +25,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/autocomplete-js.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>
@@ -39,12 +41,13 @@
             </main>
         </div>
     </div>
+
     @yield('scripts')
-    @livewireScripts
+
 
     <!-- Font awesome  -->
     <script src="https://kit.fontawesome.com/4e8530644b.js" crossorigin="anonymous"></script>
-
+    @livewireScripts
 </body>
 
 </html>
