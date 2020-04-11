@@ -7,6 +7,7 @@
 
         </h3>
     </div>
+
     <form wire:submit.prevent="submit">
         <div class="mt-4  card p-2">
             <h3 class="text-info font-weight-bolder ">Flight Details :</h3>
@@ -82,7 +83,7 @@
 
                     <div class="col">
                         <label for="etd" class="font-weight-bold text-primary  @error('l1_origin_etd') is-invalid @enderror "> ETD: </label>
-                        <input type="time" id="" class="form-control" wire:model="l1_origin_etd">
+                        <input type="time" class="form-control" wire:model="l1_origin_etd">
                         @error('l1_origin_etd') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
@@ -98,7 +99,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="destination" class="font-weight-bold text-primary"> Destination: </label>
-                        <select id="" class="form-control  @error('l1_destination_name') is-invalid @enderror " wire:model="l1_destination_name" wire:change="setDestinationIcaoIataValues">
+                        <select class="form-control  @error('l1_destination_name') is-invalid @enderror " wire:model="l1_destination_name" wire:change="setDestinationIcaoIataValues">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)
@@ -139,7 +140,7 @@
             </div>
             <div class="form-check float-right bg-outline-light  ">
                 <label class="form-check-label btn btn-light text-info font-weight-bold" for="return-flight">
-                    <input class="form-check-input text-info font-weight-bold" type="checkbox" value="" id="return-flight" wire:change="toggleHasReturn">
+                    <input class="form-check-input text-info font-weight-bold" type="checkbox" id="return-flight" wire:model="hasReturn">
                     Add a return leg to this flight </label>
             </div>
         </div>
@@ -186,7 +187,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="origin" class="font-weight-bold text-primary"> Origin: </label>
-                        <select id="" class="form-control" wire:model="l2_origin_name" wire:change="setL2OriginIcaoIataValues">
+                        <select class="form-control" wire:model="l2_origin_name" wire:change="setL2OriginIcaoIataValues">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)
@@ -222,7 +223,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="destination" class="font-weight-bold text-primary"> Destination: </label>
-                        <select id="" class="form-control" wire:model="l2_destination_name" wire:change="setL2DestinationIcaoIataValues">
+                        <select class="form-control" wire:model="l2_destination_name" wire:change="setL2DestinationIcaoIataValues">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)
@@ -247,7 +248,7 @@
 
                     <div class="col">
                         <label for="etd" class="font-weight-bold text-primary"> ETA: </label>
-                        <input type="time" id="" class="form-control" wire:model="l2_destination_etd">
+                        <input type="time" class="form-control" wire:model="l2_destination_etd">
                     </div>
                 </div>
             </div>

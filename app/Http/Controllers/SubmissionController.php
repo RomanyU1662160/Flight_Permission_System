@@ -6,8 +6,8 @@ use App\Models\Flight;
 use App\Models\Country;
 use App\Models\Submission;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+
 
 class SubmissionController extends Controller
 {
