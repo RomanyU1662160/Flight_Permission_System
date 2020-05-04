@@ -58,27 +58,27 @@ class FlightSection extends Component
             "l1_origin_name" => "required",
             "l1_origin_icao" => "required",
             "l1_origin_iata" => "required",
-            "l1_origin_dof" => "required",
+            "l1_origin_dof" => "required|after_or_equal:today",
             "l1_origin_etd" => "required",
 
             "l1_destination_name" => "required",
             "l1_destination_icao" => "required",
             "l1_destination_iata" => "required",
-            "l1_destination_dof" => "required",
+            "l1_destination_dof" => "required|after:l1_origin_dof",
             "l1_destination_etd" => "required",
 
             "l2_origin_name" => "required",
             "l2_origin_icao" => "required",
             "l2_origin_iata" => "required",
-            "l2_origin_dof" => "required",
+            // "l2_origin_dof" => "required|after:l1_origin_dof ",
             "l2_origin_etd" => "required",
 
             "l2_destination_name" => "required",
             "l2_destination_icao" => "required",
             "l2_destination_iata" => "required",
-            "l2_destination_dof" => "required",
+            // "l2_destination_dof" => "required|after:l2_origin_dof",
             "l2_destination_etd" => "required",
-        ], ['This filed is required']);
+        ]);
     }
 
 
@@ -258,6 +258,21 @@ class FlightSection extends Component
 
     public function submit()
     {
+
+        $this->validate([
+            "l1_origin_name" => "required",
+            "l1_origin_icao" => "required",
+            "l1_origin_iata" => "required",
+            "l1_origin_dof" => "required|after_or_equal:today",
+            "l1_origin_etd" => "required",
+
+            "l1_destination_name" => "required",
+            "l1_destination_icao" => "required",
+            "l1_destination_iata" => "required",
+            "l1_destination_dof" => "required|after:l1_origin_dof",
+            "l1_destination_etd" => "required",
+        ]);
+
         $leg1 = new Flight([
             'airline_id' => $this->airline->id,
             'origin_id' => $this->l1_origin_name,

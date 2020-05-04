@@ -5,7 +5,7 @@
 <div>
     <div class="alert">
         <h3 class="text-info text-center">
-            <p class="font-weight-bold"> Airline and Flight details </p>
+            <p class="font-weight-bold">Flight purpose and Airline details </p>
             <label for="file"> Step 1 :</label>
             <progress id="file" value="10" max="100"> 32% </progress>
 

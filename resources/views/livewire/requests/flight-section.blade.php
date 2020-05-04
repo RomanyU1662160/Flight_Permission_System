@@ -1,12 +1,5 @@
 <div>
-    <div class="alert">
-        <h3 class="text-info text-center">
-            <p class="font-weight-bold"> Airline and Flight details </p>
-            <label for="file"> Step 2 :</label>
-            <progress id="file" value="30" max="100"> 32% </progress>
 
-        </h3>
-    </div>
 
     <form wire:submit.prevent="submit">
         <div class="mt-4  card p-2">
@@ -50,7 +43,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="origin" class="font-weight-bold text-primary"> Origin: </label>
-                        <select class="form-control   @error('l1_origin_name') is-invalid @enderror   " wire:model="l1_origin_name" wire:change="setOriginIcaoIataValues('{{$l1_origin_name}}')">
+                        <select class="form-control   @error('l1_origin_name') is-invalid @enderror" wire:model="l1_origin_name" wire:change="setOriginIcaoIataValues('{{$l1_origin_name}}')">
                             <option value=""> Select airport</option>
                             @if(isset($airports))
                             @foreach($airports as $airport)

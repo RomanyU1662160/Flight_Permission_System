@@ -84,6 +84,6 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        return redirect()->back()->with('success', " success ");
+        return redirect()->back()->with('success', " New user Added to the system ");
     }
 }
