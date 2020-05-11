@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agent extends Model
 {
-    protected $fillable = ['name', 'website', 'sita', 'aftn'];
+    protected $fillable = ['name', 'website', 'sita', 'aftn', 'address', 'phone'];
 
     public function permissions()
     {

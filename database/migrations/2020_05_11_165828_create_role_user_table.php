@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersRolesTable extends Migration
+class CreateRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateUsersRolesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('users_roles')) {
-            Schema::create('users_roles', function (Blueprint $table) {
+        if (!Schema::hasTable('role_user')) {
+            Schema::create('role_user', function (Blueprint $table) {
                 $table->id();
                 $table->integer('user_id')->unsigned()->index();
                 $table->integer('role_id')->unsigned()->index();
@@ -24,6 +24,7 @@ class CreateUsersRolesTable extends Migration
             });
         }
     }
+
     /**
      * Reverse the migrations.
      *
@@ -31,6 +32,6 @@ class CreateUsersRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_roles');
+        Schema::dropIfExists('role_user');
     }
 }

@@ -60,7 +60,9 @@ class User extends Authenticatable
         } elseif ($this->airline) {
             return  $this->airline;
         } else {
-            return "CAA officer";
+            return new Agent([
+                'name' => "CAA Officer"
+            ]);
         }
     }
 
