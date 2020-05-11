@@ -18,10 +18,8 @@ class FlightPurposesTableSeeder extends Seeder
         foreach ($flights as $flight) {
             DB::table('flights_purposes')->insert([
                 'flight_id' => $flight->id,
-                'purpose_id' => $faker->numberBetween(1, 16),
+                'purpose_id' => $faker->numberBetween(1, 9),
             ]);
-
         }
-
     }
 }
