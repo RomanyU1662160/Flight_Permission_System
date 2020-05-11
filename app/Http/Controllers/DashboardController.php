@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Permission;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class DashboardController extends Controller
     public function getMyDetails()
     {
         $user = Auth::user();
-        $roles = $user->roles;
+        $roles = Role::all();
         return view('dashboard.myDetails', compact('user', 'roles'));
     }
 
