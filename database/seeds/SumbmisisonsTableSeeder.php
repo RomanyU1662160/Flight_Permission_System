@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Permission;
+use App\Models\Submission;
 use Illuminate\Database\Seeder;
 
-class PermissionsTableSeeder extends Seeder
+class SumbmisisonsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Permission::class, 5)->create();
+        factory(Submission::class, 3)->create();
     }
 }

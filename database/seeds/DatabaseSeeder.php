@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             airlinesTableSeeder::class,
             airportsTableSeeder::class,
             FlightPurposesTableSeeder::class,
+            SumbmisisonsTableSeeder::class,
+            UserRolesTableSeeder::class
         ]);
     }
 }

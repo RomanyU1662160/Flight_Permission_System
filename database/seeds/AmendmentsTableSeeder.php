@@ -12,6 +12,6 @@ class AmendmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Amendment::class, 50)->create();
+        factory(Amendment::class, 2)->create();
     }
 }

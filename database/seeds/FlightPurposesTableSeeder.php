@@ -16,7 +16,7 @@ class FlightPurposesTableSeeder extends Seeder
     {
         $flights = Flight::all();
         foreach ($flights as $flight) {
-            DB::table('flights_purposes')->insert([
+            DB::table('flight_purpose')->insert([
                 'flight_id' => $flight->id,
                 'purpose_id' => $faker->numberBetween(1, 9),
             ]);

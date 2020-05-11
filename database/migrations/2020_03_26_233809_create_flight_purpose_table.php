@@ -13,14 +13,16 @@ class CreateFlightPurposeTable extends Migration
      */
     public function up()
     {
-        Schema::create('flight_purpose', function (Blueprint $table) {
-            $table->id();
-            $table->integer('flight_id')->unsigned()->index();
-            $table->integer('purpose_id')->unsigned()->index();
-            $table->foreign('flight_id')->references('id')->on('flights')->onDelete('cascade');
-            $table->foreign('purpose_id')->references('id')->on('purposes')->onDelete('cascade');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('flight_purpose')) {
+            Schema::create('flight_purpose', function (Blueprint $table) {
+                $table->id();
+                $table->integer('flight_id')->unsigned()->index();
+                $table->integer('purpose_id')->unsigned()->index();
+                $table->foreign('flight_id')->references('id')->on('flights')->onDelete('cascade');
+                $table->foreign('purpose_id')->references('id')->on('purposes')->onDelete('cascade');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

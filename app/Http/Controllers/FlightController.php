@@ -46,8 +46,11 @@ class FlightController extends Controller
 
     public function reject(Flight $flight)
     {
-        $permission = $flight->permission;
-        $permission->delete();
+
+        if ($flight->permission) {
+            $flight->permission->delete();
+        }
+
         $flight->update([
             'state_id' => 4,
             'permission_id' => null
