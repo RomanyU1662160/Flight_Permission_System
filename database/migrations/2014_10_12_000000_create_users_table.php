@@ -29,7 +29,8 @@ class CreateUsersTable extends Migration
                 $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
                 $table->foreign('airline_id')->references('id')->on('airlines')->onDelete('cascade');
             });
-        }}
+        }
+    }
 
     /**
      * Reverse the migrations.
