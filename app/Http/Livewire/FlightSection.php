@@ -250,12 +250,6 @@ class FlightSection extends Component
     }
 
 
-
-
-
-
-
-
     public function submit()
     {
 
