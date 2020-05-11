@@ -18,12 +18,15 @@ class CreateAgentsTable extends Migration
             Schema::create('agents', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
-                $table->string('website');
-                $table->string('sita');
-                $table->text('aftn');
+                $table->string('website')->nullable();;
+                $table->string('sita')->nullable();;
+                $table->text('aftn')->nullable();;
+                $table->text('address')->nullable();
+                $table->text('phone')->nullable();
                 $table->timestamps();
             });
-        }}
+        }
+    }
 
     /**
      * Reverse the migrations.

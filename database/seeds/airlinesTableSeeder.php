@@ -35,7 +35,7 @@ class airlinesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'country_id' => 4,
+                'country_id' => 1,
                 'name' => "British airways",
                 'agent_id' => null,
                 'icao' => 'BAW',

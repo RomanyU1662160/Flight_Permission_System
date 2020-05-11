@@ -35,11 +35,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
     Route::post('/admin/newCAA', 'UserController@storeNewUser')->name('.newUser.newCAA');
     Route::get('/admin/newAirliner', 'UserController@registerNewAirliner')->name('.newUser.newAirliner');
     Route::post('/admin/newAirliner', 'UserController@storeNewUser')->name('.newUser.newAirliner');
-    Route::get('/admin/newAgent', 'UserController@registerNewAgent')->name('.newUser.newAgent');
-    Route::post('/admin/newAgent', 'UserController@storeNewUser')->name('.newUser.newAgent');
+    Route::get('/admin/new/agentOfficer', 'UserController@registerNewAgent')->name('.newUser.newAgent');
+    Route::post('/admin/new/agentOfficer', 'UserController@storeNewUser')->name('.newUser.newAgent');
     Route::get('/admin/dashboard/{user}', 'AdminController@getAdminDashboard')->name('.dashboard');
     Route::get('/admin/allusers', 'AdminController@getAllUsers')->name('.allUsers');
+    Route::get('/admin/add/newAirline', 'AdminController@getAddNewAirline')->name('.new.airline');
+    Route::post('/admin/add/newAirline', 'AdminController@postAddNewAirline')->name('.new.airline');
     Route::post('/admin/updateRole/{user}', 'AdminController@updateRoles')->name('.updateRole');
+    Route::get('/admin/newAgent', 'AdminController@getAddNewAgent')->name('.newAgent');
+    Route::post('/admin/newAgent', 'AdminController@storeNewAgent');
+    Route::get('/dashboard/newUser', 'AdminController@getAddNewUser')->name('.dashboard.newUser');
+
+
+    Route::get('/dashboard/newCAA', 'AdminController@registerNewCAA')->name('.dash.newUser.CAA');
+
+    Route::get('/dashboard/newAirliner', 'AdminController@registerNewAirliner')->name('.dash.newUser.Airliner');
+
+    Route::get('/dashboard/new/agentOfficer', 'AdminController@registerNewAgent')->name('.dash.newUser.Agent');
 });
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {

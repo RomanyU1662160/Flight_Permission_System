@@ -2,8 +2,11 @@
 
 
 @section('admin.content')
-<h3 class="text-center text-info">
-    @foreach($users as $user)
-    @include('users.templates.userTemplate')
-    @endforeach
-    @endsection
+<h3 class="text-center text-info"> All Users</h3>
+{{$users->links()}}
+@foreach($users as $user)
+@include('users.templates.userTemplate')
+@endforeach
+
+
+@endsection
