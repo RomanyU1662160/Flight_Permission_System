@@ -46,6 +46,9 @@
                        <li class="nav-item  m-2">
                            <a class="nav-link" href="{{ route('dashboard.index', Auth::user()) }}">{{ __('My Dashboard') }}</a>
                        </li>
+                       <li class="nav-item  m-2">
+                           <a class="nav-link" href="{{ route('admin.dashboard', Auth::user()) }}">{{ __('Admin Dashboard') }}</a>
+                       </li>
 
                        <li class="nav-item  m-2">
                            <a class="nav-link" href="{{ route('flights.all') }}">{{ __('Flights') }}</a>

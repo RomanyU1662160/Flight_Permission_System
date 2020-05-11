@@ -10,6 +10,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboard'], function () {
     Route::get('/{user}', 'DashboardController@index')->name('.index');
     Route::get('/companySubmissions/{user}', 'DashboardController@getCompanySubmissions')->name('.companySubmissions');
@@ -30,20 +31,15 @@ Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'
 /* Flights routes */
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], function () {
     Route::get('/admin/userType', 'UserController@selectUserType')->name('.newUser.selectUserType');
-
     Route::get('/admin/newCAA', 'UserController@registerNewCAA')->name('.newUser.newCAA');
-
     Route::post('/admin/newCAA', 'UserController@storeNewUser')->name('.newUser.newCAA');
-
-
     Route::get('/admin/newAirliner', 'UserController@registerNewAirliner')->name('.newUser.newAirliner');
-
     Route::post('/admin/newAirliner', 'UserController@storeNewUser')->name('.newUser.newAirliner');
-
-
     Route::get('/admin/newAgent', 'UserController@registerNewAgent')->name('.newUser.newAgent');
-
     Route::post('/admin/newAgent', 'UserController@storeNewUser')->name('.newUser.newAgent');
+    Route::get('/admin/dashboard/{user}', 'AdminController@getAdminDashboard')->name('.dashboard');
+    Route::get('/admin/allusers', 'AdminController@getAllUsers')->name('.allUsers');
+    Route::post('/admin/updateRole/{user}', 'AdminController@updateRoles')->name('.updateRole');
 });
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
