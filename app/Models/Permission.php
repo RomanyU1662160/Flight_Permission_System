@@ -6,10 +6,14 @@ use App\Models\Agent;
 use App\Models\Amendment;
 use App\Models\Flight;
 use App\Models\State;
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
+
+    use Searchable;
+
     protected $fillable = ['requester_id', 'approver_id', 'state_id', 'ref', 'info'];
 
     public function agent()
@@ -72,5 +76,17 @@ class Permission extends Model
             return   $flight->state == 1 ? true : false;
         }
         return false;
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        $array['requester'] = $this->requester;
+        $array['agent'] = $this->agent;
+        $array['state'] = $this->state;
+
+        $array['submitted'] = $this->created_at->format("D d-M-Y");
+
+        return $array;
     }
 }

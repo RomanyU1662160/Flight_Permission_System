@@ -13,9 +13,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboard'], function () {
     Route::get('/{user}', 'DashboardController@index')->name('.index');
+    Route::get('/{user}/details', 'DashboardController@getMyDetails')->name('.myDetails');
     Route::get('/companySubmissions/{user}', 'DashboardController@getCompanySubmissions')->name('.companySubmissions');
     Route::get('/userSubmissions/{user}', 'DashboardController@getUserSubmissions')->name('.userSubmissions');
     Route::get('/companyPermissions/{user}', 'DashboardController@getCompanyPermissions')->name('.companyPermissions');
+    Route::get('/track/permission', 'DashboardController@getTrackPermissions')->name('.trackPermission');
 });
 
 /* Flights routes */
@@ -45,24 +47,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
     Route::get('/admin/newAgent', 'AdminController@getAddNewAgent')->name('.newAgent');
     Route::post('/admin/newAgent', 'AdminController@storeNewAgent');
     Route::get('/dashboard/newUser', 'AdminController@getAddNewUser')->name('.dashboard.newUser');
-
-
     Route::get('/dashboard/newCAA', 'AdminController@registerNewCAA')->name('.dash.newUser.CAA');
-
     Route::get('/dashboard/newAirliner', 'AdminController@registerNewAirliner')->name('.dash.newUser.Airliner');
-
     Route::get('/dashboard/new/agentOfficer', 'AdminController@registerNewAgent')->name('.dash.newUser.Agent');
 });
+
 
 Route::group(['prefix' => 'permission', 'middleware' => ['auth'], 'as' => 'permissions'], function () {
     Route::get('/{permission}', 'PermissionController@show')->name('.show');
     Route::post('/search', 'PermissionController@search')->name('.search');
 });
 
+
 Route::group(['prefix' => 'amendment', 'middleware' => ['auth'], 'as' => 'amendments'], function () {
     Route::get('/add/{flight}', 'AmendmentController@create')->name('.add');
     Route::post('/add/{flight}', 'AmendmentController@store')->name('.add');
 });
+
 
 Route::group(['prefix' => 'submission', 'middleware' => ['auth'], 'as' => 'requests'], function () {
     Route::get('/all', 'SubmissionController@index')->name('.all');

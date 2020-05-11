@@ -8,11 +8,13 @@ use App\Models\State;
 use App\Models\Flight;
 use App\Models\Amendment;
 use Carbon\Carbon;
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class Submission extends Model
 {
+    use Searchable;
     public $reference;
     protected $fillable = ['requester_id', 'approver_id', 'state_id', 'ref', 'info'];
 
@@ -109,5 +111,17 @@ class Submission extends Model
         $approved = $this->approvedFlights();
 
         return  $approved->count() == $this->flights->count() ? true : false;
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        $array['requester'] = $this->requester;
+        $array['agent'] = $this->agent;
+        $array['state'] = $this->state;
+
+        $array['submitted'] = $this->created_at->format("D d-M-Y");
+
+        return $array;
     }
 }
