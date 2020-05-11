@@ -67,7 +67,7 @@
         <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#flight{{$flight->id}}">
             CAA options
         </button>
-        <a href="" class="btn btn-info float-right"> Amend flight </a>
+        <a href="{{route('amendments.add', $flight)}}" class="btn btn-info float-right"> Amend flight </a>
 
     </div>
 

@@ -22,10 +22,7 @@ Vue.component(
     "search-component",
     require("./components/searchComponent.vue").default
 );
-Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
-);
+Vue.component("perm-track", require("./components/PermissionTracking").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
