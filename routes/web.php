@@ -18,6 +18,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/userSubmissions/{user}', 'DashboardController@getUserSubmissions')->name('.userSubmissions');
     Route::get('/companyPermissions/{user}', 'DashboardController@getCompanyPermissions')->name('.companyPermissions');
     Route::get('/track/permission', 'DashboardController@getTrackPermissions')->name('.trackPermission');
+    Route::get('/report/custom', 'DashboardController@getCreateReport')->name('.report.custom');
+    Route::post('/report/custom', 'DashboardController@getReportResults')->name('.report.custom');
 });
 
 /* Flights routes */
