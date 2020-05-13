@@ -20,6 +20,10 @@
         <li class="nav-item ">
             <a class="text-warning nav-link" href="{{route('dashboard.trackPermission')}}">Track permission </a>
         </li>
+        <li class="nav-item ">
+            <a class="text-warning nav-link" href="{{route('dashboard.report.custom')}}"> Reports </a>
+        </li>
+
 
     </ul>
 </div>

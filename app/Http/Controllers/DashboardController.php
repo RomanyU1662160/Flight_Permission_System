@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Flight;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,5 +53,26 @@ class DashboardController extends Controller
         $permissions = $company->permissions()->paginate(3);
         //dd($permissions);
         return view('dashboard.companyPermissions', compact('company', 'permissions'));
+    }
+
+
+
+    public function getCreateReport(User $user)
+    {
+
+        return view('dashboard.reports.customReport');
+    }
+
+    public function getReportResults(Request $request)
+    {
+        $request->validate([
+            'start' => 'required',
+            'end' => 'required'
+        ]);
+
+        $startDate = $request->input('start');
+        $endDate = $request->input('end');
+        $flights = Flight::whereBetween('origin_dof', [$startDate, $endDate])->get();
+        return view('dashboard.reports.results', compact(['startDate', 'endDate', 'flights']));
     }
 }

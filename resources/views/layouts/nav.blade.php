@@ -30,7 +30,8 @@
                                   {{__('CAA Options')}} <span class="caret"></span>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="{{route('flights.all') }}" class="dropdown-item"> Approved Flights </a>
+                                  <a href="{{route('flights.all') }}" class="dropdown-item p-1"> Approved Flights </a>
+                                  <a href="#" class="dropdown-item p-1"> Create Reports </a>
                               </div>
 
                           </li>
