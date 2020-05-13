@@ -67,7 +67,7 @@ class DashboardController extends Controller
     {
         $request->validate([
             'start' => 'required',
-            'end' => 'required'
+            'end' => 'required|after_or_equal:start'
         ]);
 
         $startDate = $request->input('start');
