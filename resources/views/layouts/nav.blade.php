@@ -26,7 +26,7 @@
 
                           </li>
                           @endif
-                          @if(Auth::user()->roles->contains(1))
+                          @if(Auth::user()->roles->contains(2))
                           <li class="nav-item dropdown border  m-2">
                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{__('CAA Options')}} <span class="caret"></span>
@@ -38,6 +38,8 @@
 
                           </li>
                           @endif
+
+                          @if(Auth::user()->roles->contains([3,4]))
                           <!-- Agent Options dropdown -->
                           <li class="nav-item dropdown border m-2">
                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -49,7 +51,7 @@
 
                           </li>
 
-
+                          @endif
                           <li class="nav-item  m-2">
                               <a class="nav-link" href="{{ route('flights.all') }}">{{ __('Flights') }}</a>
                           </li>
@@ -60,12 +62,16 @@
                       <ul class="navbar-nav ml-auto">
                           <!-- Authentication Links -->
                           @auth
+                          @if(Auth::user()->roles->contains(2))
                           <li class="nav-item">
                               <a class="nav-link" href="{{route('requests.all')}}">{{ __('New Submissions')}} <i class="fas fa-plane"></i></a>
                           </li>
+                          @endif
+                          @if(Auth::user()->roles->contains(1))
                           <li class="nav-item bg-info ">
                               <a class="nav-link text-warning" href="{{ route('admin.dashboard', Auth::user()) }}">{{ __('Admin Dashboard') }}</a>
                           </li>
+                          @endif
                           <li class="nav-item  ">
                               <a class="nav-link" href="{{ route('dashboard.index', Auth::user()) }}">{{ __('My Dashboard') }}</a>
                           </li>
