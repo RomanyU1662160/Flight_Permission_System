@@ -7,7 +7,7 @@
     "Working days": "أيام العمل ",
     "E-Mail Address": "البريد الالكترونى",
     "Password": "كلمة السر ",
-    "Confirm Password": "تاكيج كلمة السر ",
+    "Confirm Password": "تاكيد كلمة السر ",
     "Mon": "ألاثنين",
     "Tue": "الثلاثاء",
     "Wed": "الاربعاء",
@@ -19,5 +19,7 @@
     "Send Password Reset Link": "إرسال رابط إعادة تعيين كلمة السر ",
     "Reset Password": "إعادة تعيين كلمة المرور ",
     "search anything": "أبدء البحث عن اى شىء",
-    "The StandUp": "ألاجتماع "
+    "The StandUp": "ألاجتماع ",
+    "Role": "الوظيفة",
+    "Please Select": "برجاء الاختيار"
 }

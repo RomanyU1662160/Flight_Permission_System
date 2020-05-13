@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Schema::defaultStringLength(191);
+        date_default_timezone_set('Europe/London');
     }
 
     /**
@@ -24,6 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 }

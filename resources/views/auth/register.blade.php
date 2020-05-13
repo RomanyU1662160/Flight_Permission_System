@@ -59,7 +59,7 @@
 
                             <div class="col-md-6">
                                 <select class="form-control @error('role') is-invalid @enderror" name="role" id="role">
-                                    <option value="" readonly> Please Select </option>
+                                    <option value="" readonly> {{ __('Please Select') }} </option>
                                     <option value="CAA"> CAA officer </option>
                                     <option value="agent"> Aviation Agent </option>
                                     <option value="airline"> Airline </option>

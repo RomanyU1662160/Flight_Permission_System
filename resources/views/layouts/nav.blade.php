@@ -14,6 +14,7 @@
                       <!-- Left Side Of Navbar -->
                       <ul class="navbar-nav mr-auto ">
                           @auth
+                          @if(Auth::user()->roles->contains(1))
                           <!-- Admin options dropdown -->
                           <li class="nav-item dropdown border  m-2">
                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -24,7 +25,8 @@
                               </div>
 
                           </li>
-
+                          @endif
+                          @if(Auth::user()->roles->contains(1))
                           <li class="nav-item dropdown border  m-2">
                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{__('CAA Options')}} <span class="caret"></span>
@@ -35,7 +37,7 @@
                               </div>
 
                           </li>
-
+                          @endif
                           <!-- Agent Options dropdown -->
                           <li class="nav-item dropdown border m-2">
                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -67,10 +69,6 @@
                           <li class="nav-item  ">
                               <a class="nav-link" href="{{ route('dashboard.index', Auth::user()) }}">{{ __('My Dashboard') }}</a>
                           </li>
-
-
-
-
                           @endauth
                           @guest
                           <li class="nav-item">
@@ -100,6 +98,11 @@
                           </li>
                           @endguest
                       </ul>
+                      @if(App::isLocale('en'))
+                      <a class="btn btn-link text-warning mr-4 bg-secondary" href="{{route('locale',$locale='ar')}}"> Ar</a>
+                      @else
+                      <a class=" btn btn-link text-warning mr-4 bg-secondary" href="{{route('locale',$locale='en')}}"> En</a>
+                      @endif
                   </div>
 
               </nav>
