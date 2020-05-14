@@ -39,6 +39,13 @@ class DashboardController extends Controller
         return view('dashboard.userSubmissions', compact('submissions', 'user'));
     }
 
+    public function getUserApprovedSubmissions(User $user)
+    {
+
+        $submissions = $user->submissions()->where('state_id', 1)->paginate(3);
+        return view('dashboard.userSubmissions', compact('submissions', 'user'));
+    }
+
     public function getTrackPermissions(User $user)
     {
 
@@ -72,7 +79,7 @@ class DashboardController extends Controller
 
         $startDate = $request->input('start');
         $endDate = $request->input('end');
-        $flights = Flight::whereBetween('origin_dof', [$startDate, $endDate])->get();
+        $flights = Flight::where('state_id', 1)->whereBetween('origin_dof', [$startDate, $endDate])->get();
         return view('dashboard.reports.results', compact(['startDate', 'endDate', 'flights']));
     }
 }

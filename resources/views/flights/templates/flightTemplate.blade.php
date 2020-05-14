@@ -63,10 +63,11 @@
         @if(!request()->is('flights/show/*'))
         <a href="{{route('flights.show', $flight)}}" class="btn btn-outline-info float-right">view details <i class=" ml-2 fas fa-angle-double-right"></i> </a>
         @endif
-
+        @if(Auth::user()->roles->contains(2))
         <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#flight{{$flight->id}}">
             CAA options
         </button>
+        @endif
         <a href="{{route('amendments.add', $flight)}}" class="btn btn-info float-right"> Amend flight </a>
 
     </div>

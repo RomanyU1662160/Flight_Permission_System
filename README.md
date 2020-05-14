@@ -1,79 +1,100 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+---
+typora-root-url: public\assets
+---
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<p align="center"><img src="./public/assets/logo.png" width="400" height="300"></p>
 
-## About Laravel
+# About
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The flight permission system is an online to automate and facilitate the process of requesting and issuing flight permissions is discussed. Due to my previous experience work at the Egyptian Civil Aviation Authority, I am fully aware that there is a desperate need for such a system as they are fully relying on paperwork. Therefore, the stakeholder of the system is the Egyptian Civil Aviation Authority. I have benefited from my previous working experience with them to create a selected group to define the system requirements and contribute to the system testing.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## **Prerequisites**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The following dependences must be installed on your local development environment to run the application.
 
-## Learning Laravel
+1.  Composer
+2.  PHP 7.3
+3.  Node.js
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## **Installation**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The following step by step series will help you to install the dependencies and get a development
 
-## Laravel Sponsors
+environment running.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. **Clone the repository to your local machine.**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+    ```php
+    git clone  https://github.com/advanced-web/awp-1-RomanyU1662160.git
+    ```
 
-## Contributing
+2. **In your command run the following commands** _make sure you are in the reposiotry direcotry_
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```php+HTML
+composer install
+```
 
-## Code of Conduct
+```
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```javascript
+npm install
+```
 
-## Security Vulnerabilities
+3. **Rename the .env_example file in your root folder to .env and add your DB name and credentials**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    ```php+HTML
+    DB_DATABASE= your database name
+    DB_USERNAME= DB  username
+    DB_PASSWORD= DB  password
+    ```
 
-## License
+4) **You <u>Must</u> Add the Algolia API credentials to get the filter searching working**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    ```php
+    ALGOLIA_APP_ID=  Your Algolia app id
+    ALGOLIA_SECRET=  Your Algolia  admin secret key
+    ```
+
+```php
+MIX_ALGOLIA_APP_ID= Your Algolia app id
+MIX_ALGOLIA_SEARCH= Your Algolia  search only secret key
+```
+
+5. **Seeding the DB**
+
+```php
+php artisan migrate --seed
+```
+
+## System Functionality
+
+## 1- CRUD functions
+
+## 2- Authentication
+
+-   Login/Register System
+-   Guests are authenticated to access the home page only.
+
+## 3- Authorization
+
+-   Only Admins are authorized to access the Admin dashboard.
+-   Logged user authorized to update his own details only, not other users’ details.
+
+## 4 -Search
+
+-   **Filter Searching :** Search for anything in the home page using Algolia.
+-   **Specific Searching** : Search for specific Projects ,Teams or User.
+
+## 5- Accessibility
+
+-   HTML attributes
+
+*   Validation
+
+    All forms in the application are validated and a validation errors are displayed in a red color.
+
+*   Responsive working on mobiles
+
+    The application has been tested on mobiles using the Chrome dev tools. Using the Bootstrap library makes the application responsive on various screen sizes.

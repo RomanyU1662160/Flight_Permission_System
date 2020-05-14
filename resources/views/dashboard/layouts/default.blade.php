@@ -15,7 +15,7 @@
             <a class="text-warning nav-link {{request()->is('dashboard/userSubmissions/*')? 'active' : ''}} " href="{{route('dashboard.userSubmissions',Auth::user())}}">My submissions </a>
         </li>
         <li class="nav-item ">
-            <a class="text-warning nav-link  {{request()->is('dashboard/companyPermissions/*')? 'active' : ''}}" href="{{route('dashboard.companyPermissions',Auth::user())}}">Approved permissions </a>
+            <a class="text-warning nav-link  {{request()->is('dashboard/approvedPermissions/*')? 'active' : ''}}" href="{{route('dashboard.approvedPermissions',Auth::user())}}">Approved permissions </a>
         </li>
         <li class="nav-item ">
             <a class="text-warning nav-link" href="{{route('dashboard.trackPermission')}}">Track permission </a>

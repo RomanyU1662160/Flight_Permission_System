@@ -25,6 +25,13 @@ class AdminController extends Controller
         return view('admins.allusers', compact(['users', 'roles']));
     }
 
+    public function getAllAirlines()
+    {
+
+        $airlines = Airline::paginate(4);
+        return view('airlines.index', compact('airlines'));
+    }
+
     public function updateRoles(Request $request, User $user)
     {
         $data = $request->except('_token');
@@ -100,7 +107,7 @@ class AdminController extends Controller
         ]);
         Airline::create([
             'name' => $request->input('name'),
-            'country' => $request->input('country'),
+            'country_id' => $request->input('country'),
             'icao' => $request->input('icao'),
             'iata' => $request->input('iata'),
 

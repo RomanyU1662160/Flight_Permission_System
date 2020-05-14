@@ -3,9 +3,10 @@
 @section('dashboard.content')
 <div class="row mt-4">
     <div class="col-md-8">
-        <h3 class="text-info text-center"> Submissions by {{$user->getFullName()}} (<small> {{$user->getCompany()->name}})</small></h3>
-    </div>
 
+        <h3 class="text-info text-center"> Submissions by {{$user->getFullName()}} (<small> {{$user->getCompany()->name}})</small></h3>
+        {{$submissions->links()}}
+    </div>
     <div class="col-md-4 form-group">
 
         <form class="form-inline" action="{{route('requests.search')}}" method="post">

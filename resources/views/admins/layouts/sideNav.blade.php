@@ -60,6 +60,9 @@
         </li>
         <div class="col-md-10 offset-md-1">
             <li class=" nav-item border-bottom ">
+                <a class=" nav-link text-info {{request()->is('/admin/airlines/all')? ' bg-info text-warning  ' : ' '}}" href="{{route('admin.airlines.all')}}"> All Airlines </a>
+            </li>
+            <li class=" nav-item border-bottom ">
                 <a class=" nav-link text-info {{request()->is('admin/admin/add/newAirline')? ' bg-info text-warning  ' : ' '}}" href="{{route('admin.new.airline')}}"> Add New Airline </a>
             </li>
 

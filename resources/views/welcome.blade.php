@@ -5,7 +5,7 @@
 
 <div class="container  ">
     <div class="jumbotron bg-light mt-5">
-        <h1 class="text-secondary text-center"> The Flight Permission system </h1>
+        <h1 class="text-secondary text-center">{{ __('The Flight Permission system')}} </h1>
     </div>
 
     <div class="jumbotron bg-light mt-3">

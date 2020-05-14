@@ -13,7 +13,7 @@ class SubmissionController extends Controller
 {
     public function index()
     {
-        $submissions =  Submission::where('state_id', 2)->paginate(6);
+        $submissions =  Submission::where('state_id', 2)->latest()->paginate(4);
 
         return view('submissions.index', compact('submissions'));
     }
@@ -27,7 +27,7 @@ class SubmissionController extends Controller
 
     public function getSubmittedRequests()
     {
-        $requests = Submission::paginate(2);
+        $requests = Submission::paginate(4);
         return view('submissions.index', compact('requests'));
     }
 

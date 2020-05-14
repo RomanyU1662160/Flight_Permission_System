@@ -20,6 +20,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/companySubmissions/{user}', 'DashboardController@getCompanySubmissions')->name('.companySubmissions');
     Route::get('/userSubmissions/{user}', 'DashboardController@getUserSubmissions')->name('.userSubmissions');
     Route::get('/companyPermissions/{user}', 'DashboardController@getCompanyPermissions')->name('.companyPermissions');
+    Route::get('/approvedPermissions/{user}', 'DashboardController@getUserApprovedSubmissions')->name('.approvedPermissions');
     Route::get('/track/permission', 'DashboardController@getTrackPermissions')->name('.trackPermission');
     Route::get('/report/custom', 'DashboardController@getCreateReport')->name('.report.custom');
     Route::post('/report/custom', 'DashboardController@getReportResults')->name('.report.custom');
@@ -28,6 +29,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 /* Flights routes */
 Route::group(['prefix' => 'flights', 'middleware' => ['auth'], 'as' => 'flights'], function () {
     Route::get('/all', 'FlightController@index')->name('.all');
+    Route::get('/approved', 'FlightController@getApprovedFlights')->name('.approved');
+    Route::get('/pending', 'FlightController@getPendingFlights')->name('.pending');
+    Route::get('/submitted', 'FlightController@getSubmittedFlights')->name('.submitted');
+    Route::get('/rejected', 'FlightController@getRejectedFlights')->name('.rejected');
     Route::get('/show/{flight}', 'FlightController@show')->name('.show');
     Route::get('/approve/{flight}', 'FlightController@approve')->name('.approve');
     Route::get('/reject/{flight}', 'FlightController@reject')->name('.reject');
@@ -55,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin'], f
     Route::get('/dashboard/newCAA', 'AdminController@registerNewCAA')->name('.dash.newUser.CAA');
     Route::get('/dashboard/newAirliner', 'AdminController@registerNewAirliner')->name('.dash.newUser.Airliner');
     Route::get('/dashboard/new/agentOfficer', 'AdminController@registerNewAgent')->name('.dash.newUser.Agent');
+    Route::get('/dashboard/airlines/all', 'AdminController@getAllAirlines')->name('.airlines.all');
 });
 
 

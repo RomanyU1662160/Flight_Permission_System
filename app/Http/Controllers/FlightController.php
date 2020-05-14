@@ -23,6 +23,29 @@ class FlightController extends Controller
         return view('flights.index', compact('flights'));
     }
 
+    public function getApprovedFlights()
+    {
+        $flights = Flight::where('state_id', 1)->get();
+        return view('flights.approved', compact('flights'));
+    }
+
+    public function getPendingFlights()
+    {
+        $flights = Flight::where('state_id', 3)->get();
+        return view('flights.pending', compact('flights'));
+    }
+    public function getSubmittedFlights()
+    {
+        $flights = Flight::where('state_id', 2)->get();
+        return view('flights.submitted', compact('flights'));
+    }
+    public function getRejectedFlights()
+    {
+        $flights = Flight::where('state_id', 4)->get();
+        return view('flights.rejected', compact('flights'));
+    }
+
+
 
     public function approve(Flight $flight)
     {
@@ -61,8 +84,11 @@ class FlightController extends Controller
 
     public function pend(Flight $flight)
     {
-        $permission = $flight->permission;
-        $permission->delete();
+        if ($flight->permission) {
+            $flight->permission->delete();
+        }
+
+
         $flight->update([
             'state_id' => 3,
             'permission_id' => null
@@ -72,8 +98,10 @@ class FlightController extends Controller
 
     public function underReview(Flight $flight)
     {
-        $permission = $flight->permission;
-        $permission->delete();
+        if ($flight->permission) {
+            $flight->permission->delete();
+        }
+
         $flight->update([
             'state_id' => 2,
             'permission_id' => null

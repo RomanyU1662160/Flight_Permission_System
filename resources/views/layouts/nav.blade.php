@@ -22,6 +22,7 @@
                               </a>
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                   <a href="{{route('admin.newUser.selectUserType')}}" class="dropdown-item"> Add New User </a>
+                                  <a href="{{ route('admin.dashboard', Auth::user()) }}" class="dropdown-item"> {{__('Admin Dashboard')}} </a>
                               </div>
 
                           </li>
@@ -32,10 +33,12 @@
                                   {{__('CAA Options')}} <span class="caret"></span>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="{{route('flights.all') }}" class="dropdown-item p-1"> Approved Flights </a>
-                                  <a href="#" class="dropdown-item p-1"> Create Reports </a>
+                                  <a href="{{route('flights.approved') }}" class="dropdown-item p-1"> Approved Flights </a>
+                                  <a href="{{route('flights.submitted') }}" class="dropdown-item p-1"> new submissions </a>
+                                  <a href="{{route('flights.pending') }}" class="dropdown-item p-1"> Pending submissions </a>
+                                  <a href="{{route('flights.rejected') }}" class="dropdown-item p-1"> Rejected submissions </a>
+                                  <a href="{{route('dashboard.report.custom')}}" class="dropdown-item p-1"> Create Reports </a>
                               </div>
-
                           </li>
                           @endif
 
@@ -46,16 +49,18 @@
                                   {{__('Agent Options')}} <span class="caret"></span>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="{{route('requests.new.fresh')}}" class="dropdown-item"> Start new request </a>
+                                  <a href="{{route('requests.new.fresh')}}" class="dropdown-item"> {{__('Start new request')}} </a>
                               </div>
-
                           </li>
 
                           @endif
+                          @if(Auth::user()->roles->contains(2))
                           <li class="nav-item  m-2">
                               <a class="nav-link" href="{{ route('flights.all') }}">{{ __('Flights') }}</a>
                           </li>
+                          @endif
                           @endauth
+
                       </ul>
 
                       <!-- Right Side Of Navbar -->
@@ -67,14 +72,16 @@
                               <a class="nav-link" href="{{route('requests.all')}}">{{ __('New Submissions')}} <i class="fas fa-plane"></i></a>
                           </li>
                           @endif
-                          @if(Auth::user()->roles->contains(1))
-                          <li class="nav-item bg-info ">
-                              <a class="nav-link text-warning" href="{{ route('admin.dashboard', Auth::user()) }}">{{ __('Admin Dashboard') }}</a>
-                          </li>
-                          @endif
+
                           <li class="nav-item  ">
                               <a class="nav-link" href="{{ route('dashboard.index', Auth::user()) }}">{{ __('My Dashboard') }}</a>
                           </li>
+
+                          @if(Auth::user()->roles->contains(1))
+                          <li class="nav-item btn btn-outline-info ">
+                              <a class="nav-link text-secondary" href="{{ route('admin.dashboard', Auth::user()) }}">{{ __('Admin Dashboard') }}</a>
+                          </li>
+                          @endif
                           @endauth
                           @guest
                           <li class="nav-item">
