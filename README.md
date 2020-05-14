@@ -25,7 +25,7 @@ environment running.
 1. **Clone the repository to your local machine.**
 
     ```php
-    git clone  https://github.com/advanced-web/awp-1-RomanyU1662160.git
+    git clone  https://github.com/RomanyU1662160/Flight_Permission_System.git
     ```
 
 2. **In your command run the following commands** _make sure you are in the reposiotry direcotry_
